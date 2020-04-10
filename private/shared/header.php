@@ -12,12 +12,11 @@
   </head>
 
   <body>
-    <header>
-      <h1>GBI Staff Area</h1>
-    </header>
 
     <navigation>
       <ul>
-        <li><a href="<?php echo url_for('/index.php'); ?>">Main Page</a></li>
+        <li><a href="<?php echo url_for('/index.php'); ?>">Home</a></li>
+        <li><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
+        <li><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Statistics</a></li>
       </ul>
     </navigation>

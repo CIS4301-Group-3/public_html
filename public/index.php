@@ -7,28 +7,22 @@
 
 <div id="content">
   <div id="main-menu">
-    <h2>Main Menu</h2>
-    <ul>
-      <li><a href="<?php echo url_for('/test.php'); ?>">Candidate Comparison</a>
-      </li>
-      <li><a href="">Individual Candidate Page</a>
-      </li>
-    </ul>
+    <header>
+      <h1>Election Finance Insights</h1>
+    </header>
+    <p>Our intent is to design and deploy a web application that allows users to gain insight into the
+        finances of the 2020 Presidential Primary. In an election season with so many candidates,
+        having a tool able to assist in analyzing campaign nance trends would be an invaluable
+        asset. Each candidate is required to report information about individual donations to the
+        Federal Election Commission. This report includes detailed information about each individ-
+        ual donor, including their name, the donation amount, city, and state as well as employer
+        and occupation. We are interested in seeing comparisons to individual campaign events as
+        well as coverage of candidates and their competitors in the news media. Lastly, we believe we
+        will be able to gain insight into the donors by comparing their employers and occupations.
+    </p>
+    <h2><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
+    <h2><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Page</a></h2>
   </div>
-  <?php
-    $query = oci_parse($db, 'SELECT * FROM aukee.employer');
-    oci_execute($query);
-    echo "<div><br>
-            <hr><table>\n";
-    while ($row = oci_fetch_array($query, OCI_ASSOC+OCI_RETURN_NULLS)){
-            echo "<tr>\n";
-            foreach ($row as $item){
-                    echo "<td>" . ($item !== NULL ? htmlentities($item, ENT_QUOTES) : "&nbsp") . "</td>\n";
-            }
-            echo "</tr>\n";
-    }
-    echo "</table>\n";
-  ?>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
