@@ -18,7 +18,7 @@
     </ul>
   </div>
   <?php
-    $query = oci_parse($db, 'SELECT * FROM DG_TEST');
+    $query = oci_parse($db, 'SELECT * FROM aukee.employer');
     oci_execute($query);
     echo "<div><br>
             <hr><table>\n";
