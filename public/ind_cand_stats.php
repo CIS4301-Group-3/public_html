@@ -23,5 +23,6 @@
           echo "</tr>\n";
   }
   echo "</table>\n";
+  oci_free_statement($query);
 ?>
 <?php include(SHARED_PATH . '/footer.php'); ?>
