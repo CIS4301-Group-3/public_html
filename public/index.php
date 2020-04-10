@@ -7,9 +7,6 @@
 
 <div id="content">
   <div id="main-menu">
-    <header>
-      <h1>Election Finance Insights</h1>
-    </header>
     <p>Our intent is to design and deploy a web application that allows users to gain insight into the
         finances of the 2020 Presidential Primary. In an election season with so many candidates,
         having a tool able to assist in analyzing campaign nance trends would be an invaluable

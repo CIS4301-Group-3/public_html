@@ -12,7 +12,9 @@
   </head>
 
   <body>
-
+    <header>
+      <h1>Election Finance Insights</h1>
+    </header>
     <navigation>
       <ul>
         <li><a href="<?php echo url_for('/index.php'); ?>">Home</a></li>
