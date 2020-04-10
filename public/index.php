@@ -2,8 +2,6 @@
 
 <?php require_once('../private/initialize.php'); ?>
 
-
-
 <?php $page_title = 'Main Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -11,7 +9,7 @@
   <div id="main-menu">
     <h2>Main Menu</h2>
     <ul>
-      <li><a href="">Candidate Comparison</a>
+      <li><a href="<?php echo url_for('/test.php'); ?>">Candidate Comparison</a>
       </li>
       <li><a href="">Individual Candidate Page</a>
       </li>
