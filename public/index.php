@@ -5,7 +5,7 @@
 <?php $page_title = 'Main Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<div id="container">
   <div id="main-menu">
     <p>Our intent is to design and deploy a web application that allows users to gain insight into the
         finances of the 2020 Presidential Primary. In an election season with so many candidates,

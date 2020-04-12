@@ -18,7 +18,7 @@
     <header>
       <h1>Election Finance Insights</h1>
     </header>
-    <navigation>
+    <navigation class="navbar navbar-expand-lg">
       <ul>
         <li><a href="<?php echo url_for('/index.php'); ?>">Home</a></li>
         <li><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
