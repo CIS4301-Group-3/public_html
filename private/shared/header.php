@@ -15,13 +15,14 @@
   </head>
 
   <body>
+    <div class="container">
     <header>
       <h1>Election Finance Insights</h1>
     </header>
     <navigation class="navbar navbar-expand-lg">
-      <ul>
-        <li><a href="<?php echo url_for('/index.php'); ?>">Home</a></li>
-        <li><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
-        <li><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Statistics</a></li>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/index.php'); ?>">Home</a></li>
+        <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
+        <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Statistics</a></li>
       </ul>
     </navigation>
