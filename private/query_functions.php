@@ -11,12 +11,13 @@
     $sql .= "DG5.DONATION.DAY, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
     $sql .= "FROM DG5.DONATION JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID LIKE DG5.DONATION.COMMITTEEID ";
-    $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = '" . db_escape($db, $candidate) . "' ";
+    $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv ";
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY DG5.DONATION.DAY ASC";
     echo $sql;
     $query = oci_parse($db, $sql);
+    oci_bind_by_name($query, ":candidate_bv", $candidate);
     oci_execute($query);
     confirm_result_set($query);
     return $query;
