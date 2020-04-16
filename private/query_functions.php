@@ -17,8 +17,6 @@
     $sql .= "ORDER BY DG5.DONATION.DAY ASC;";*/
     echo $sql;
     $result = oci_parse($db, $sql);
-    oci_execute($result);
-    confirm_result_set($result);
     return $result;
   }
 
