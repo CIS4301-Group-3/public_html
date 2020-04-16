@@ -11,7 +11,8 @@
   </div>
 </div>
 <?php
-  $query = donations_over_time_usa('Bernie Sanders');
+$candidate = 'Bernie Sanders';
+  $query = donations_over_time_usa($candidate);
   echo "<div><br>
           <hr><table>\n";
   while ($row = oci_fetch_array($query, OCI_ASSOC+OCI_RETURN_NULLS)){
