@@ -11,7 +11,7 @@
   </div>
 </div>
 <?php
-$candidate = 'Bernie Sanders';
+  $candidate = 'Bernie Sanders';
   $query = donations_over_time_usa($candidate);
   oci_execute($query);
   confirm_result_set($query);

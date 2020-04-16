@@ -6,7 +6,7 @@
   function donations_over_time_usa($candidate) {
     global $db;
     
-    $sql = "SELECT * FROM aukee.employer;";
+    $sql = "SELECT * FROM aukee.employer";
     /*$sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
     $sql .= "DG5.DONATION.DAY, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
