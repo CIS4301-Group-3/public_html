@@ -13,10 +13,11 @@
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = '" . db_escape($db, $candidate) . "' ";
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
-    $sql .= "ORDER BY DG5.DONATION.DAY ASC";
+    $sql .= "ORDER BY DG5.DONATION.DAY ASC;";
     echo $sql;
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
+    $result = oci_parse($db, $sql);
+    oci_execute($result);
+    //confirm_result_set($result);
     return $result;
   }
 
