@@ -6,7 +6,7 @@
   function donations_over_time_usa($candidate) {
     global $db;
     
-    $sql = "SELECT * FROM aukee.employer";
+    $sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
     /*$sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
     $sql .= "DG5.DONATION.DAY, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
@@ -16,8 +16,10 @@
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY DG5.DONATION.DAY ASC;";*/
     echo $sql;
-    $result = oci_parse($db, $sql);
-    return $result;
+    $query = oci_parse($db, $sql);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
   }
 
   function find_subject_by_id($id) {
