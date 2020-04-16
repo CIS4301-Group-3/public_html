@@ -3,11 +3,17 @@
   //*********These are example queries from the php/mysql course I took.*****//
   //*********I like the idea of putting all queries in one file**************//
 
-  function find_all_subjects() {
+  function donations_over_time_usa($candidate) {
     global $db;
     
-    $sql = "SELECT * FROM subjects ";
-    $sql .= "ORDER BY position ASC";
+    $sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
+    $sql .= "DG5.DONATION.DAY, ";
+    $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
+    $sql .= "FROM DG5.DONATION JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID LIKE DG5.DONATION.COMMITTEEID ";
+    $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = '" . db_escape($db, $candidate) . "' ";
+    $sql .= "GROUP BY DG5.DONATION.DAY, ";
+    $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
+    $sql .= "ORDER BY DG5.DONATION.DAY ASC";
     // echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

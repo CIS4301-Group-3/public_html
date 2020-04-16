@@ -11,7 +11,7 @@
   </div>
 </div>
 <?php
-  $query = oci_parse($db, 'SELECT * FROM aukee.employer');
+  $query = oci_parse($db, donations_over_time('Bernie Sanders'));
   oci_execute($query);
   echo "<div><br>
           <hr><table>\n";
