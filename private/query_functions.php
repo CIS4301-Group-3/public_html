@@ -14,7 +14,7 @@
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY DG5.DONATION.DAY ASC";
-    // echo $sql;
+    echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
