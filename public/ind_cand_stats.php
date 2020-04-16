@@ -13,8 +13,6 @@
 <?php
   $candidate = 'Bernie Sanders';
   $query = donations_over_time_usa($candidate);
-  oci_execute($query);
-  confirm_result_set($query);
   echo "<div><br>
           <hr><table>\n";
   while ($row = oci_fetch_array($query, OCI_ASSOC+OCI_RETURN_NULLS)){
