@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
     <header>
       <h1>Election Finance Insights</h1>
     </header>
