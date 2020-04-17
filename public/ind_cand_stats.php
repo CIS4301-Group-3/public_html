@@ -55,16 +55,14 @@
   <div class="col-2">
     <h4>Choose a Candidate</h4>
     <?php
-      while($row = oci_fetch_array($images, OCI_ASSOC+OCI_RETURN_NULLS)) {
+      /*while($row = oci_fetch_array($images, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<img src=\"";
         row['IMAGE'];
         echo "\" alt=\""  ;
         row['CANDIDATE'];
         echo "\" class=\"img-thumbnail\">\n";
-      }
+      }*/
     ?>
-    
-    <img src="<?php echo candidate_photo($candidate)?>" alt="<?php echo $candidate?>" class="img-thumbnail">
   </div>
   <div class="col-2">
   
