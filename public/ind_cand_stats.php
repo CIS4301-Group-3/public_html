@@ -3,7 +3,7 @@
 <?php require_once('../private/initialize.php'); ?>
 <?php
 
-  $candidate = 'Bernie Sanders';
+  $candidate = '';
   $start_date = '20190204';
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
@@ -54,16 +54,18 @@
   <div id="main-menu">
     <h2>Individual Candidate Statistics</h2>
   </div>
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option2" autocomplete="off">State
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option3" autocomplete="off">City
-    </label>
+  <div class="col" align="center">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2" autocomplete="off">State
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3" autocomplete="off">City
+      </label>
+    </div>
   </div>
   <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 </div>
