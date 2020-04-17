@@ -7,14 +7,21 @@
     redirect_to(url_for('/index.php'));
   }
   $id = $_GET['id'];
-
-  $candidate = 'Bernie Sanders';
+  $list_candidates = list_candidates();
+  $i = 0;
+  while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
+    if ($i == $id) {
+      $candidate = $row['CANDIDATE'];
+    }
+    $i++;
+  }
+  
+  //$candidate = 'Bernie Sanders';
   $start_date = '20190204';
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  $list_candidates = list_candidates();
-  $num_candidates = oci_fetch_all($list_candidates, $candidate_array);
+  
   
   var_dump($candidate_array);
 ?>
@@ -22,7 +29,6 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <script type="text/javascript">
-      //var candidateArray = <?php echo json_encode($candidate_array); ?>;
       var donationsArray = <?php echo json_encode($dataPoints); ?>;
       var newDonationsArray = [];
       var date;
@@ -67,9 +73,9 @@
           // database ****I can't get this to work!!*****
       for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
-        echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i])));
+        echo url_for('/images/show_image.php?id=' . h(u($candidate_array['CANDIDATE'][i])));
         echo "\" alt=\"";
-        echo $candidate_array[i];
+        echo $candidate_array['CANDIDATE'][i];
         echo "\" class=\"img-thumbnail\">\n";
       }
     ?>

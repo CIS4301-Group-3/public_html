@@ -25,9 +25,9 @@
     <h2><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
     <h2><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Page</a></h2>
     <ul>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[0]))); ?>"><?php $list_candidates[0] ?></a></li>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[1]))); ?>"><?php $list_candidates[1] ?></a></li>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[2]))); ?>"><?php $list_candidates[2] ?></a></li>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][0]))); ?>"><?php $candidate_array['CANDIDATE'][0] ?></a></li>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][1]))); ?>"><?php $candidate_array['CANDIDATE'][1] ?></a></li>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][2]))); ?>"><?php $candidate_array['CANDIDATE'][2] ?></a></li>
     </ul>
   </div>
 </div>
