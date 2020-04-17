@@ -5,7 +5,8 @@
 
   $candidate = 'Bernie Sanders';
   $query = donations_over_time_usa($candidate);
-  $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW+OCI_NUM);
+  var_dump($dataPoints);
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>

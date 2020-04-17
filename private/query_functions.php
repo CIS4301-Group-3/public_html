@@ -14,7 +14,7 @@
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY DG5.DONATION.DAY ASC";
-    echo $sql;
+    //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
     oci_execute($query);
