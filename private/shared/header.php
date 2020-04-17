@@ -21,9 +21,9 @@
       for (var i=0;i<jsonArray.length;i++)
       {
         date = jsonArray[i]['DAY'];
-        year = parseInt(date.substring(4, 8));
-        month = parseInt(date.substring(0, 2)) - 1;
-        day = parseInt(date.substring(2, 4));
+        year = parseInt(date.substring(0, 4));
+        month = parseInt(date.substring(4, 6)) - 1;
+        day = parseInt(date.substring(6, 8));
         newJSONArray.push({x: new Date(year, month, day), y: parseInt(jsonArray[i]['TOTAL_DONATIONS'])});
       }
       console.log(newJSONArray);
