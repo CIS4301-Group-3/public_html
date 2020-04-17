@@ -10,11 +10,8 @@
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   $images = candidate_photos();
   $num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  for($i=0;$i<count($candidate_array);$i++) {
-    echo "Candidate" . $candidate_array[i]['CANDIDATE'];
-    echo "Image" . $candidate_array[i]['IMAGE'];
-  }
-  var_dump($candidate_array);
+  
+  //var_dump($candidate_array);
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -61,11 +58,11 @@
   <div class="col-2">
     <h4>Choose a Candidate</h4>
     <?php
-      while($row = oci_fetch_array($images, OCI_ASSOC+OCI_RETURN_NULLS)) {
+      for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
-        echo $row['IMAGE'];
+        echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i]['CANDIDATE'])));
         echo "\" alt=\""  ;
-        echo $row['CANDIDATE'];
+        echo $candidate_array[i]['CANDIDATE'];
         echo "\" class=\"img-thumbnail\">\n";
       }
     ?>
