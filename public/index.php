@@ -1,6 +1,11 @@
 #!/usr/local/bin/php
 
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../private/initialize.php');
+
+  $list_candidates = list_candidates();
+  $num_candidates = oci_fetch_all($list_candidates, $candidate_array);
+
+?>
 
 <?php $page_title = 'Main Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -19,6 +24,11 @@
     </p>
     <h2><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
     <h2><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Page</a></h2>
+    <ul>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[0]))); ?>"><?php $list_candidates[0] ?></a></li>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[1]))); ?>"><?php $list_candidates[1] ?></a></li>
+      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($list_candidates[2]))); ?>"><?php $list_candidates[2] ?></a></li>
+    </ul>
   </div>
 </div>
 

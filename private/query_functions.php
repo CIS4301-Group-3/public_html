@@ -40,6 +40,21 @@
     confirm_result_set($query);
     return $query;
   }
+
+  function list_candidates() {
+    global $db;
+    
+    //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
+    $sql = "SELECT ELEHMANN.CAMPAIGN.CANDIDATE ";
+    $sql .= "FROM ELEHMANN.CAMPAIGN ";
+    $sql .= "ORDER BY ELEHMANN.CAMPAIGN.CANDIDATE ASC";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
+  }
+
   function find_subject_by_id($id) {
     global $db;
 

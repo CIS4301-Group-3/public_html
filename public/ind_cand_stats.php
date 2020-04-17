@@ -3,15 +3,20 @@
 <?php require_once('../private/initialize.php'); ?>
 <?php
 
+  if(!isset($_GET['id'])) {
+    redirect_to(url_for('/index.php'));
+  }
+  $id = $_GET['id'];
+
   $candidate = 'Bernie Sanders';
   $start_date = '20190204';
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  //$images = candidate_photos();
-  //$num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  $list_candidates = list_candidates();
+  $num_candidates = oci_fetch_all($list_candidates, $candidate_array);
   
-  //var_dump($candidate_array);
+  var_dump($candidate_array);
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -59,12 +64,12 @@
     <h4>Choose a Candidate</h4>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
-          // database
+          // database ****I can't get this to work!!*****
       for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
-        echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i]['CANDIDATE'])));
+        echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i])));
         echo "\" alt=\"";
-        echo $candidate_array[i]['CANDIDATE'];
+        echo $candidate_array[i];
         echo "\" class=\"img-thumbnail\">\n";
       }
     ?>
