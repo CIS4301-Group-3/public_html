@@ -3,7 +3,8 @@
 <?php require_once('../private/initialize.php');
 
   $list_candidates = list_candidates();
-  $num_candidates = oci_fetch_all($list_candidates, $candidate_array);
+  //$num_candidates = oci_fetch_all($list_candidates, $candidate_array);
+  $count = 0;
 
 ?>
 
@@ -23,11 +24,15 @@
         will be able to gain insight into the donors by comparing their employers and occupations.
     </p>
     <h2><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
-    <h2><a href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Page</a></h2>
+    <h2>Individual Candidate Page</h2>
     <ul>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][0]))); ?>"><?php $candidate_array['CANDIDATE'][0] ?></a></li>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][1]))); ?>"><?php $candidate_array['CANDIDATE'][1] ?></a></li>
-      <li><a href="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($candidate_array['CANDIDATE'][2]))); ?>"><?php $candidate_array['CANDIDATE'][2] ?></a></li>
+    <?php while($cand = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
+        <li>
+          <a class="action"
+            href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
+            <?php echo $cand['CANDIDATE']; ?></a>
+        </li>
+      <?php $count++;} ?>
     </ul>
   </div>
 </div>
