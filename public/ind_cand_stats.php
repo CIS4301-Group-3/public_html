@@ -8,6 +8,7 @@
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  $images = candidate_photos();
   
 ?>
 <?php $page_title = 'Individual Stats'; ?>
@@ -53,10 +54,20 @@
 <div class="row">
   <div class="col-2">
     <h4>Choose a Candidate</h4>
+    <?php
+      while($row = oci_fetch_array($images, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        echo "<img src=\"";
+        row['IMAGE'];
+        echo "\" alt=\""  ;
+        row['CANDIDATE'];
+        echo "\" class=\"img-thumbnail\">\n";
+      }
+    ?>
+    
     <img src="<?php echo candidate_photo($candidate)?>" alt="<?php echo $candidate?>" class="img-thumbnail">
   </div>
   <div class="col-2">
-    <img src="" alt="" class="img-thumbnail">
+  
   </div>
   <div class="col-8" id="content">
     <div id="main-menu">
@@ -91,5 +102,6 @@
   }
   echo "</table>\n";*/
   oci_free_statement($query);
+  oci_free_statement($images);
 ?>
 <?php include(SHARED_PATH . '/footer.php'); ?>
