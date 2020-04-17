@@ -50,10 +50,12 @@
       }
 </script>
 <div class="row">
-  <div class="col-3"></div>
+  <div class="col-3">
+    <h4>Choose a Candidate</h4>
+  </div>
   <div class="col-9" id="content">
     <div id="main-menu">
-      <h2>Individual Candidate Statistics</h2>
+      <h2 align="center" padding="100px">Individual Candidate Statistics</h2>
     </div>
     <div class="col" align="center">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
