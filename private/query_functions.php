@@ -7,16 +7,15 @@
     global $db;
     
     //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
-    $sql = "SELECT * FROM (";
-    $sql .= "SELECT DG5.DONATION.DAY AS YEAR_DATE, ";
+    $sql = "SELECT DG5.DONATION.DAY, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
     $sql .= "FROM DG5.DONATION ";
-    $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID LIKE DG5.DONATION.COMMITTEEID ";
-    $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv ";
+    $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID ";
+    $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv AND ";
+    $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
-    $sql .= "ELEHMANN.COMMITTEE.CANDIDATE) ";
-    $sql .= "WHERE YEAR_DATE >= :start_date_bv AND YEAR_DATE <= :end_date_bv ";
-    $sql .= "ORDER BY YEAR_DATE ASC";
+    $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
+    $sql .= "ORDER BY DG5.DONATION.DAY ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
