@@ -10,6 +10,7 @@
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   $images = candidate_photos();
   $num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  echo $candidate_array;
   
 ?>
 <?php $page_title = 'Individual Stats'; ?>
