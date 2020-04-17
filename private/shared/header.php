@@ -18,7 +18,7 @@
       var year;
       var month;
       var day;
-      for (int i=0;i<jsonArray.length;i++)
+      for (var i=0;i<jsonArray.length;i++)
       {
         date = jsonArray[i]['DAY'];
         year = parseInt(date.substring(4, 8));
