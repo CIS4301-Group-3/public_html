@@ -22,7 +22,7 @@
       {
         date = jsonArray[i]['DAY'];
         year = parseInt(date.substring(4, 8));
-        month = parseInt(date.substring(0, 2));
+        month = parseInt(date.substring(0, 2)) - 1;
         day = parseInt(date.substring(2, 4));
         newJSONArray.push({x: new Date(year, month, day), y: jsonArray[i]['TOTAL_DONATIONS']});
       }
