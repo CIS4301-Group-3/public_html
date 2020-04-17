@@ -49,13 +49,18 @@
       
       }
 </script>
+
 <div class="row">
-  <div class="col-3">
+  <div class="col-2">
     <h4>Choose a Candidate</h4>
+    <img src="<?php echo candidate_photo($candidate)?>" alt="<?php echo $candidate?>" class="img-thumbnail">
   </div>
-  <div class="col-9" id="content">
+  <div class="col-2">
+    <img src="" alt="" class="img-thumbnail">
+  </div>
+  <div class="col-8" id="content">
     <div id="main-menu">
-      <h2 align="center" padding="100px">Individual Candidate Statistics</h2>
+      <h2 align="center">Individual Candidate Statistics</h2>
     </div>
     <div class="col" align="center">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">

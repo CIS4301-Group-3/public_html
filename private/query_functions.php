@@ -26,6 +26,20 @@
     return $query;
   }
 
+  function candidate_photo($candidate) {
+    global $db;
+    
+    //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
+    $sql = "SELECT ELEHMANN.CAMPAIGN.IMAGE ";
+    $sql .= "FROM ELEHMANN.CAMPAIGN ";
+    $sql .= "WHERE ELEHMANN.CAMPAIGN.CANDIDATE = :candidate_bv ";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_bind_by_name($query, ":candidate_bv", $candidate);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
+  }
   function find_subject_by_id($id) {
     global $db;
 
