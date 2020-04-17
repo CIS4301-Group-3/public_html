@@ -10,8 +10,15 @@
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   $images = candidate_photos();
   $num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  echo $candidate_array;
-  
+  for($i=0;$i<count($candidate_array);$i++) {
+    if($candidate_array[i]['CANDIDATE'] == 'Bernie Sanders') {
+      echo $candidate_array[i]['CANDIDATE'];
+      echo $candidate_array[i]['image'];
+    }
+    else {
+      echo "Not Bernie Sanders\n";
+    }
+  }
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
