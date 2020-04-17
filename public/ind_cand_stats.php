@@ -57,7 +57,7 @@
 <div class="row">
   <div class="col-2">
     <h4>Choose a Candidate</h4>
-    <img src="/images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">
+    <img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">
     <?php /*
       for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
