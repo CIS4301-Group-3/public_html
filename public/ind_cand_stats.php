@@ -1,7 +1,12 @@
 #!/usr/local/bin/php
 
 <?php require_once('../private/initialize.php'); ?>
+<?php
 
+  $candidate = 'Bernie Sanders';
+  $query = donations_over_time_usa($candidate);
+  $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -9,11 +14,11 @@
   <div id="main-menu">
     <h2>Individual Candidate Statistics</h2>
   </div>
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 </div>
 <?php
-  $candidate = 'Bernie Sanders';
-  $query = donations_over_time_usa($candidate);
-  echo "<div><br>
+  
+  /*echo "<div><br>
           <hr><table>\n";
   while ($row = oci_fetch_array($query, OCI_ASSOC+OCI_RETURN_NULLS)){
           echo "<tr>\n";
@@ -22,7 +27,7 @@
           }
           echo "</tr>\n";
   }
-  echo "</table>\n";
+  echo "</table>\n";*/
   oci_free_statement($query);
 ?>
 <?php include(SHARED_PATH . '/footer.php'); ?>
