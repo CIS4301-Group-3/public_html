@@ -7,13 +7,13 @@
     global $db;
     
     //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
-    $sql = "SELECT TO_CHAR(TO_DATE( DG5.DONATION.DAY, 'MMDDYYYY' ), 'YYYYMMDD') AS TRUE_DATE, ";
+    $sql = "SELECT TO_CHAR(TO_DATE( DG5.DONATION.DAY, 'MMDDYYYY' ), 'YYYYMMDD') AS YEAR_DATE, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
     $sql .= "FROM DG5.DONATION JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID LIKE DG5.DONATION.COMMITTEEID ";
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv ";
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
     $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
-    $sql .= "ORDER BY TRUE_DATE ASC";
+    $sql .= "ORDER BY YEAR_DATE ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);

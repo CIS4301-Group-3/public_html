@@ -20,7 +20,7 @@
       var day;
       for (var i=0;i<jsonArray.length;i++)
       {
-        date = jsonArray[i]['DAY'];
+        date = jsonArray[i]['YEAR_DATE'];
         year = parseInt(date.substring(0, 4));
         month = parseInt(date.substring(4, 6)) - 1;
         day = parseInt(date.substring(6, 8));
