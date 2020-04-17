@@ -57,16 +57,16 @@
 <div class="row">
   <div class="col-2">
     <h4>Choose a Candidate</h4>
-    <img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">
-    <?php /* // Trying to make code to dynamically add the candidates as they are added to the
-            // database
+    <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
+    <?php // Trying to make code to dynamically add the candidates as they are added to the
+          // database
       for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
         echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i]['CANDIDATE'])));
-        echo "\" alt=\""  ;
+        echo "\" alt=\"";
         echo $candidate_array[i]['CANDIDATE'];
         echo "\" class=\"img-thumbnail\">\n";
-      }*/
+      }
     ?>
   </div>
   <div class="col-2">
