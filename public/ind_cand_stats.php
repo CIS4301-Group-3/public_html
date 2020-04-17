@@ -9,27 +9,29 @@
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   $images = candidate_photos();
+  $num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <script type="text/javascript">
-      var jsonArray = <?php echo json_encode($dataPoints); ?>;
-      var newJSONArray = [];
+      var candidateArray = <?php echo json_encode($candidate_array); ?>;
+      var donationsArray = <?php echo json_encode($dataPoints); ?>;
+      var newDonationsArray = [];
       var date;
       var year;
       var month;
       var day;
-      for (var i=0;i<jsonArray.length;i++)
+      for (var i=0;i<donationsArray.length;i++)
       {
-        date = jsonArray[i]['DAY'];
+        date = donationsArray[i]['DAY'];
         year = parseInt(date.substring(0, 4));
         month = parseInt(date.substring(4, 6)) - 1;
         day = parseInt(date.substring(6, 8));
-        newJSONArray.push({x: new Date(year, month, day), y: parseInt(jsonArray[i]['TOTAL_DONATIONS'])});
+        newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
       }
-      console.log(newJSONArray);
+      console.log(newDonationsArray);
       window.onload = function () {
       
       var chart = new CanvasJS.Chart("chartContainer", {
@@ -43,7 +45,7 @@
         },
         data: [{
           type: "line",
-          dataPoints: newJSONArray
+          dataPoints: newDonationsArray
         }]
       });
       chart.render();
