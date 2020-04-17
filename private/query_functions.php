@@ -3,20 +3,24 @@
   //*********These are example queries from the php/mysql course I took.*****//
   //*********I like the idea of putting all queries in one file**************//
 
-  function donations_over_time_usa($candidate) {
+  function donations_over_time_usa($candidate, $start_date, $end_date) {
     global $db;
     
     //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
-    $sql = "SELECT TO_CHAR(TO_DATE( DG5.DONATION.DAY, 'MMDDYYYY' ), 'YYYYMMDD') AS YEAR_DATE, ";
+    $sql = "SELECT * FROM (";
+    $sql .= "SELECT TO_CHAR(TO_DATE( DG5.DONATION.DAY, 'MMDDYYYY' ), 'YYYYMMDD') AS YEAR_DATE, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
     $sql .= "FROM DG5.DONATION JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID LIKE DG5.DONATION.COMMITTEEID ";
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv ";
     $sql .= "GROUP BY DG5.DONATION.DAY, ";
-    $sql .= "ELEHMANN.COMMITTEE.CANDIDATE ";
+    $sql .= "ELEHMANN.COMMITTEE.CANDIDATE) ";
+    $sql .= "WHERE YEAR_DATE >= :start_date_bv AND YEAR_DATE <= :end_date_bv ";
     $sql .= "ORDER BY YEAR_DATE ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
+    oci_bind_by_name($query, ":start_date_bv", $start_date);
+    oci_bind_by_name($query, ":end_date_bv", $end_date);
     oci_execute($query);
     confirm_result_set($query);
     return $query;
