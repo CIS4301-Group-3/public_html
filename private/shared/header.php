@@ -13,12 +13,19 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript">
       var jsonArray = <?php echo json_encode($dataPoints); ?>
-      document.write(jsonArray);
-      /*var obj;
+      var newJSONArray = [];
+      var date;
+      var year;
+      var month;
+      var day;
       for (int i=0;i<jsonArray.length;i++)
       {
-        obj = JSON.parse(jsonArray)[i];
-      }*/
+        date = jsonArray[i]['DAY'];
+        year = parseInt(date.substring(4, 8));
+        month = parseInt(date.substring(0, 2));
+        day = parseInt(date.substring(2, 4));
+        newJSONArray.push({x: new Date(year, month, day), y: jsonArray[i]['TOTAL_DONATIONS']});
+      }
       window.onload = function () {
       
       var chart = new CanvasJS.Chart("chartContainer", {
@@ -30,7 +37,7 @@
         },
         data: [{
           type: "line",
-          dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+          dataPoints: newJSONArray
         }]
       });
       chart.render();
