@@ -26,6 +26,7 @@
         day = parseInt(date.substring(2, 4));
         newJSONArray.push({x: new Date(year, month, day), y: jsonArray[i]['TOTAL_DONATIONS']});
       }
+      document.write(newJSONArray);
       window.onload = function () {
       
       var chart = new CanvasJS.Chart("chartContainer", {
