@@ -26,13 +26,12 @@
     return $query;
   }
 
-  function candidate_photo($candidate) {
+  function candidate_photos() {
     global $db;
     
     //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
-    $sql = "SELECT ELEHMANN.CAMPAIGN.IMAGE ";
+    $sql = "SELECT * ";
     $sql .= "FROM ELEHMANN.CAMPAIGN ";
-    $sql .= "WHERE ELEHMANN.CAMPAIGN.CANDIDATE = :candidate_bv ";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
