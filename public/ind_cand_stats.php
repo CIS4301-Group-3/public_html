@@ -14,6 +14,7 @@
     echo "Candidate" . $candidate_array[i]['CANDIDATE'];
     echo "Image" . $candidate_array[i]['IMAGE'];
   }
+  var_dump($candidate_array);
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
