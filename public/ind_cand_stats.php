@@ -49,25 +49,27 @@
       
       }
 </script>
-
-<div id="content">
-  <div id="main-menu">
-    <h2>Individual Candidate Statistics</h2>
-  </div>
-  <div class="col" align="center">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
-      </label>
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off">State
-      </label>
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off">City
-      </label>
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-9" id="content">
+    <div id="main-menu">
+      <h2>Individual Candidate Statistics</h2>
     </div>
+    <div class="col" align="center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2" autocomplete="off">State
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off">City
+        </label>
+      </div>
+    </div>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   </div>
-  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 </div>
 <?php
   
