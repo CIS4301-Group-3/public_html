@@ -3,7 +3,7 @@
 <?php require_once('../private/initialize.php'); ?>
 <?php
 
-  $candidate = '';
+  $candidate = 'Bernie Sanders';
   $start_date = '20190204';
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
