@@ -57,9 +57,9 @@
     <?php
       while($row = oci_fetch_array($images, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<img src=\"";
-        row['IMAGE'];
+        echo $row['IMAGE'];
         echo "\" alt=\""  ;
-        row['CANDIDATE'];
+        echo $row['CANDIDATE'];
         echo "\" class=\"img-thumbnail\">\n";
       }
     ?>
