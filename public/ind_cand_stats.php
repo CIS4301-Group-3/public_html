@@ -8,8 +8,8 @@
   $end_date = '20191225';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  $images = candidate_photos();
-  $num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  //$images = candidate_photos();
+  //$num_candidates = oci_fetch_all($images, $candidate_array, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
   //var_dump($candidate_array);
 ?>
@@ -17,7 +17,7 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <script type="text/javascript">
-      var candidateArray = <?php echo json_encode($candidate_array); ?>;
+      //var candidateArray = <?php echo json_encode($candidate_array); ?>;
       var donationsArray = <?php echo json_encode($dataPoints); ?>;
       var newDonationsArray = [];
       var date;
@@ -57,14 +57,15 @@
 <div class="row">
   <div class="col-2">
     <h4>Choose a Candidate</h4>
-    <?php
+    <img src="/images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">
+    <?php /*
       for($i=0;$i<count($candidate_array);$i++) {
         echo "<img src=\"";
         echo url_for('/images/show_image.php?id=' . h(u($candidate_array[i]['CANDIDATE'])));
         echo "\" alt=\""  ;
         echo $candidate_array[i]['CANDIDATE'];
         echo "\" class=\"img-thumbnail\">\n";
-      }
+      }*/
     ?>
   </div>
   <div class="col-2">
