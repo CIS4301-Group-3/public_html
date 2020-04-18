@@ -63,7 +63,7 @@
 </script>
 
 <div class="row">
-  <div class="col-2">
+  <div class="col-2 centerItem">
     <h4 class="text-center">Select a</h4>
     <h2 class="text-center">Candidate</h2>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
@@ -75,7 +75,7 @@
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
       <a class="action"
         href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
-        <img class="text-center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+        <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
               alt="<?php echo $cand['CANDIDATE']; ?>" class="img-thumbnail">
         <h6 class="text-center"><?php echo $cand['CANDIDATE']; ?></h6>
       </a>
@@ -83,16 +83,9 @@
           }
           oci_free_statement($candidate_array); ?>
   </div>
-  <div class="col-2">
-    <?php $candidate_array = list_candidates();
-      $count = 0;
-      while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) {
-        if ($id == $count) { ?>
-        <img algin="center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
-              alt="<?php echo $cand['CANDIDATE']; ?>" class="img-fluid">
-    <?php } $count++;
-        }
-        oci_free_statement($candidate_array); ?>
+  <div class="col-2 centerItem">
+    <img src="<?php echo url_for('/images/show_image.php?id=' . $id);?>"
+         alt="<?php echo $candidate; ?>" class="img-fluid">
   </div>
   <div class="col-8" id="content">
     <div class="text-center">
