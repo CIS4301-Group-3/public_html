@@ -128,7 +128,7 @@
           </label>
         </div>
       </div>
-      <div id="usmap" style="border: 1px">
+      <div id="usmap" style="border: 2px solid black">
         <div id="map" style="display: none; width: 700px; height: 500px; align-items: center;"></div>
         <div id="clicked-state"></div>
         <div id="city_selector"></div>
