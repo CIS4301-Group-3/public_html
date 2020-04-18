@@ -1,3 +1,6 @@
+* {
+  border: 1px;
+}
 .centerItem{
   align-items: center;
 }
