@@ -15,7 +15,7 @@
     }
     $i++;
   }
-  
+  oci_free_statement($list_candidates);
   $start_date = '20190101';
   $end_date = '20191231';
 
@@ -69,14 +69,19 @@
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
           // database ****I can't get this to work!!*****
-      for($i=0;$i<count($candidate_array);$i++) {
-        echo "<img src=\"";
-        echo url_for('/images/show_image.php?id=' . h(u($candidate_array['CANDIDATE'][i])));
-        echo "\" alt=\"";
-        echo $candidate_array['CANDIDATE'][i];
-        echo "\" class=\"img-thumbnail\">\n";
-      }
     ?>
+    <?php $candidate_array = list_candidates();
+      $count = 0;
+      while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
+      <a class="action"
+        href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
+        <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+              alt="<?php echo $cand['CANDIDATE']; ?>" class="img-thumbnail">
+        <h6><?php echo $cand['CANDIDATE']; ?></h6>
+      </a>
+    <?php $count++;
+          }
+          oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-2">
   
@@ -114,6 +119,5 @@
   }
   echo "</table>\n";*/
   oci_free_statement($query);
-  oci_free_statement($images);
 ?>
 <?php include(SHARED_PATH . '/footer.php'); ?>

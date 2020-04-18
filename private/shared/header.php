@@ -1,7 +1,7 @@
 <?php
     if(!isset($page_title)) { $page_title = 'Election Finance Insight'; }
 
-    $list_candidates2 = list_candidates();
+    $navbar_candidate_list = list_candidates();
     $count2 = 0;
 
 ?>
@@ -32,11 +32,13 @@
             Individual Candidate Statistics
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <?php while($cand = oci_fetch_array($list_candidates2, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
+            <?php while($cand = oci_fetch_array($navbar_candidate_list, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
               <a class="dropdown-item"
                 href="<?php echo url_for('/ind_cand_stats.php?id=' . $count2); ?>">
                 <?php echo $cand['CANDIDATE']; ?></a>
-            <?php $count2++;} ?>
+            <?php $count2++;
+                  }
+                  oci_free_statement($navbar_candidate_list);?>
           </div>
         </li>
       </ul>

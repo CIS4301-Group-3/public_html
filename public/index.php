@@ -31,7 +31,9 @@
             href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
             <?php echo $cand['CANDIDATE']; ?></a>
         </li>
-      <?php $count++;} ?>
+      <?php $count++;
+            }
+            oci_free_statement($list_candidates); ?>
     </ul>
   </div>
 </div>
