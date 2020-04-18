@@ -98,14 +98,16 @@
     <div>
       <h2 align="center">Individual Candidate Statistics</h2>
     </div>
-    <form>
+    <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
       <div class="form-row">
+        <div class="col"></div>
         <div class="col">
-          <input type="date" class="form-control" value="2019-01-01">
+          <input type="date" class="form-control" value="2019-01-01" label="From">
         </div>
         <div class="col">
-          <input type="date" class="form-control" placeholder="2019-12-31">
+          <input type="date" class="form-control" value="2019-12-31" label="To">
         </div>
+        <div class="col"></div>
       </div>
       <div align="center">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -120,6 +122,7 @@
           </label>
         </div>
       </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   </div>
