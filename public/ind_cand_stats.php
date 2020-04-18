@@ -167,7 +167,7 @@ function handleCity(e) {
 
 $('#map').usmap({
   stateStyles: {
-	      fill: 'blue'
+	      fill: 'aqua'
 	    },
   // The click action
   click: function(event, data) {
