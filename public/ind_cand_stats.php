@@ -113,6 +113,7 @@
         <div class="col"></div>
       </div>
       <div align="center">
+      <label align="center">Filter Location By:</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
             <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
