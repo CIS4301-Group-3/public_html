@@ -45,7 +45,8 @@ function is_get_request() {
 }
 
 function format_date($date) {
-    
+    $formatted_date = substr($date, 0, 4) . substr($date, 5, 2) . substr($date, 8, 2);
+    return $formatted_date;
 }
 /*function display_errors($errors=array()) {
     $output = '';
