@@ -65,8 +65,8 @@
 
 <div class="row">
   <div class="col-2">
-    <h4 align="center">Select a</h4>
-    <h2 align="center">Candidate</h2>
+    <h4 class="text-center">Select a</h4>
+    <h2 class="text-center">Candidate</h2>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
           // database ****I can't get the images to load!!*****
@@ -76,9 +76,9 @@
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
       <a class="action"
         href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
-        <img align="center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+        <img class="text-center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
               alt="<?php echo $cand['CANDIDATE']; ?>" class="img-thumbnail">
-        <h6 align="center"><?php echo $cand['CANDIDATE']; ?></h6>
+        <h6 class="text-center"><?php echo $cand['CANDIDATE']; ?></h6>
       </a>
     <?php $count++;
           }
@@ -96,8 +96,8 @@
         oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-8" id="content">
-    <div>
-      <h2 align="center">Individual Candidate Statistics</h2>
+    <div class="text-center">
+      <h2>Individual Candidate Statistics</h2>
     </div>
     <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
       <div class="form-row">
@@ -107,13 +107,15 @@
           <input type="date" class="form-control" value="2019-01-01">
         </div>
         <div class="col">
-          <label>From</label>
+          <label>To</label>
           <input type="date" class="form-control" value="2019-12-31">
         </div>
         <div class="col"></div>
       </div>
-      <div align="center">
-        <label align="center">Filter Location By:</label>
+      <div class="text-center">
+        <div class="text-center">
+          <label>Filter Location By:</label>
+        </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
             <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
@@ -126,7 +128,9 @@
           </label>
         </div>
       </div>
-      <button type="submit" align="center" class="btn btn-primary">Submit</button>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </form>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   </div>
