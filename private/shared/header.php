@@ -1,5 +1,9 @@
 <?php
     if(!isset($page_title)) { $page_title = 'Election Finance Insight'; }
+
+    $list_candidates2 = list_candidates();
+    $count2 = 0;
+
 ?>
 
 <!doctype html>
@@ -18,10 +22,22 @@
     <header>
       <h1>Election Finance Insights</h1>
     </header>
-    <navigation class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/index.php'); ?>">Home</a></li>
         <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
-        <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/ind_cand_stats.php'); ?>">Individual Candidate Statistics</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Individual Candidate Statistics
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <?php while($cand = oci_fetch_array($list_candidates2, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
+              <a class="dropdown-item"
+                href="<?php echo url_for('/ind_cand_stats.php?id=' . $count2); ?>">
+                <?php echo $cand['CANDIDATE']; ?></a>
+            <?php $count2++;} ?>
+          </div>
+        </li>
       </ul>
-    </navigation>
+    </nav>
