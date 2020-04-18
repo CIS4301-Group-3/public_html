@@ -127,7 +127,10 @@
           </label>
         </div>
       </div>
-      <div id="AJAXtest"></div>
+      <div id="usmap"></div>
+      <div id="city_selector"></div>
+      <div id="map" style="width: 350px; height: 250px;"></div>
+      <div id="clicked-state"></div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -150,7 +153,8 @@
   oci_free_statement($query);
 ?>
 <script>
-var testContainer = document.getElementById('AJAXtest');
+var map = document.getElementById('usmap');
+var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
 var city = document.getElementById("cityOption");
@@ -160,36 +164,26 @@ usa.onchange = handleUSA;
 city.onchange = handleCity;
 
 function handleState(e) {
-  testContainer.textContent = `The field's value is
+  map.textContent = `The field's value is
       ${e.target.value.length} character(s) long.`;
 }
 
 function handleUSA(e) {
-  testContainer.textContent = ``;
+  map.textContent = ``;
 }
 
 function handleCity(e) {
-  testContainer.textContent = `The field's value is
+  map.textContent = `The field's value is
       ${e.target.value.length} character(s) long. And this is a City!!`;
 }
 
-state.addEventListener('change', function() {
-  console.log('State works');
-  //renderHTML();
+$('#map').usmap({
+  // The click action
+  click: function(event, data) {
+    $('#clicked-state')
+      .text('You clicked: '+data.name)
+      .parent().effect('highlight', {color: '#C7F464'}, 2000);
+  }
 });
-
-usa.addEventListener('change', function() {
-  console.log('USA works');
-  //renderHTML();
-});
-
-city.addEventListener("change", function() {
-  console.log("City works");
-  //renderHTML();
-});
-
-function renderHTML() {
-  testContainer.insertAdjacentHTML('beforeend', 'testing 123')
-}
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
