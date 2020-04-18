@@ -88,12 +88,8 @@
       $count = 0;
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) {
         if ($id == $count) { ?>
-      <a class="action"
-        href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
         <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
               alt="<?php echo $cand['CANDIDATE']; ?>" class="img-fluid">
-        <h6><?php echo $cand['CANDIDATE']; ?></h6>
-      </a>
     <?php } $count++;
         }
         oci_free_statement($candidate_array); ?>
