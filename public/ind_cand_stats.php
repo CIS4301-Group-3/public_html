@@ -166,6 +166,9 @@ function handleCity(e) {
 }
 
 $('#map').usmap({
+  stateStyles: {
+	      fill: 'blue'
+	    },
   // The click action
   click: function(event, data) {
     $('#clicked-state')
