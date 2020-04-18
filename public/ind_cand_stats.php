@@ -150,7 +150,7 @@
   oci_free_statement($query);
 ?>
 <script>
-var testContainer = document.getElementById("AJAXTest");
+var testContainer = document.getElementById("AJAXtest");
 var btn = document.getElementById("stateOption");
 
 btn.addEventListener("click", function() {
