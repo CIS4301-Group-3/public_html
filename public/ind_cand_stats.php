@@ -129,9 +129,9 @@
       </div>
       <div id="city_selector"></div>
       <div class="centerItem" id="usmap">
-        <div id="map" class="container-fluid"></div>
+        <div id="map" style="display: none" class="container-fluid"></div>
+        <div id="clicked-state"></div>
       </div>
-      <!--<div id="clicked-state"></div>-->
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
