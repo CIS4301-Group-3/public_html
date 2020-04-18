@@ -129,7 +129,7 @@
       </div>
       <div id="city_selector"></div>
       <div class="centerItem" id="usmap">
-        <div id="map" align="center" style="display: none; width: 700px; height: 500px;"></div>
+        <div id="map" style="display: none; width: 700px; height: 500px; align-items: center;"></div>
         <div id="clicked-state"></div>
       </div>
       <div class="text-center">
