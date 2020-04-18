@@ -155,11 +155,22 @@ var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
 var city = document.getElementById("cityOption");
 
-state.onchange = handleChange;
+state.onchange = handleState;
+usa.onchange = handleUSA;
+city.onchange = handleCity;
 
-function handleChange(e) {
+function handleState(e) {
   testContainer.textContent = `The field's value is
       ${e.target.value.length} character(s) long.`;
+}
+
+function handleUSA(e) {
+  testContainer.textContent = ``;
+}
+
+function handleCity(e) {
+  testContainer.textContent = `The field's value is
+      ${e.target.value.length} character(s) long. And this is a City!!`;
 }
 
 state.addEventListener('change', function() {
