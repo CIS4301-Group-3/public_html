@@ -129,10 +129,10 @@
       </div>
       <div id="usmap"></div>
       <div id="city_selector"></div>
-      <div>
+      <div display="none">
         <div id="map" class="centerItem" style="width: 350px; height: 250px;"></div>
       </div>
-      <div id="clicked-state"></div>
+      <!--<div id="clicked-state"></div>-->
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -141,21 +141,10 @@
   </div>
 </div>
 <?php
-  
-  /*echo "<div><br>
-          <hr><table>\n";
-  while ($row = oci_fetch_array($query, OCI_ASSOC+OCI_RETURN_NULLS)){
-          echo "<tr>\n";
-          foreach ($row as $item){
-                  echo "<td>" . ($item !== NULL ? htmlentities($item, ENT_QUOTES) : "&nbsp") . "</td>\n";
-          }
-          echo "</tr>\n";
-  }
-  echo "</table>\n";*/
   oci_free_statement($query);
 ?>
 <script>
-var map = document.getElementById('usmap');
+var map = document.getElementById('map');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
@@ -166,12 +155,11 @@ usa.onchange = handleUSA;
 city.onchange = handleCity;
 
 function handleState(e) {
-  map.textContent = `The field's value is
-      ${e.target.value.length} character(s) long.`;
+  map.style.display = "block";
 }
 
 function handleUSA(e) {
-  map.textContent = ``;
+  map.style.display = "none";
 }
 
 function handleCity(e) {
