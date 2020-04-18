@@ -95,22 +95,32 @@
         oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-8" id="content">
-    <div id="main-menu">
+    <div>
       <h2 align="center">Individual Candidate Statistics</h2>
     </div>
-    <div class="col" align="center">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option2" autocomplete="off">State
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option3" autocomplete="off">City
-        </label>
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <input type="date" class="form-control" value="2019-01-01">
+        </div>
+        <div class="col">
+          <input type="date" class="form-control" placeholder="2019-12-31">
+        </div>
       </div>
-    </div>
+      <div align="center">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off">State
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off">City
+          </label>
+        </div>
+      </div>
+    </form>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   </div>
 </div>
