@@ -63,7 +63,7 @@
       }
 
 
-      var btn = document.getElementByID("stateOption");
+      var btn = document.getElementById("stateOption");
 
       btn.addEventListener("click", function() {
         console.log("It works");
