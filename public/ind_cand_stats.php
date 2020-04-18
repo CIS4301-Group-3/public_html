@@ -68,7 +68,7 @@
     <h4>Choose a Candidate</h4>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
-          // database ****I can't get this to work!!*****
+          // database ****I can't get the images to load!!*****
     ?>
     <?php $candidate_array = list_candidates();
       $count = 0;
@@ -84,7 +84,19 @@
           oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-2">
-  
+    <?php $candidate_array = list_candidates();
+      $count = 0;
+      while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        if ($id == $count) { ?>
+      <a class="action"
+        href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
+        <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+              alt="<?php echo $cand['CANDIDATE']; ?>" class="img-fluid">
+        <h6><?php echo $cand['CANDIDATE']; ?></h6>
+      </a>
+    <?php } $count++;
+        }
+        oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-8" id="content">
     <div id="main-menu">
