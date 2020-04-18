@@ -65,9 +65,9 @@
 
       var btn = document.getElementByID("stateOption");
 
-      btn.addEventListerner("click", function() {
+      btn.addEventListener("click", function() {
         console.log("It works");
-      })
+      });
 </script>
 
 <div class="row">
