@@ -1,12 +1,10 @@
-.centerItem{
+.centerItem {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 }
 
 .mapSize {
   display: none;
   width: 700px; height: 500px;
-  border: 1px solid black;
 }
