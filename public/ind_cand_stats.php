@@ -17,7 +17,7 @@
     }
     $i++;
   }
-  if (!$cand_exist)
+  if ($cand_exist == false)
   {
     redirect_to(url_for('/index.php'));
   }
