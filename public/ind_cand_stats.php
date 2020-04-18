@@ -16,11 +16,27 @@
     $i++;
   }
   oci_free_statement($list_candidates);
-  $start_date = '20190101';
-  $end_date = '20191231';
 
-  $query = donations_over_time_usa($candidate, $start_date, $end_date);
-  $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  if(is_post_request()) {
+
+    // Handle form values sent by new.php
+  
+    $start_date = $_POST['start_date'] ?? '';
+    $end_date = $_POST['end_date'] ?? '';
+
+    $query = donations_over_time_usa($candidate, $start_date, $end_date);
+    $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+  
+  } else {
+  
+    $start_date = '20190101';
+    $end_date = '20191231';
+  
+  }
+
+  
+
+  
   
 ?>
 <?php $page_title = 'Individual Stats'; ?>
@@ -97,11 +113,11 @@
         <div class="col"></div>
         <div class="col">
           <label>From</label>
-          <input type="date" class="form-control" value="2019-01-01">
+          <input type="date" name="start_date" class="form-control" value="<?php echo h($start_date); ?>">
         </div>
         <div class="col">
           <label>To</label>
-          <input type="date" class="form-control" value="2019-12-31">
+          <input type="date" name="end_date" class="form-control" value="<?php echo h($end_date); ?>">
         </div>
         <div class="col"></div>
       </div>
