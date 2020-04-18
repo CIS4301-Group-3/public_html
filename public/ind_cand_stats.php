@@ -119,8 +119,8 @@
           <label class="btn btn-secondary active">
             <input type="radio" name="options" id="USAOption" autocomplete="off" checked>USA
           </label>
-          <label class="btn btn-secondary" id="stateOption">
-            <input type="radio" name="options" id="option2" autocomplete="off">State
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="stateOption" autocomplete="off">State
           </label>
           <label class="btn btn-secondary">
             <input type="radio" name="options" id="cityOption" autocomplete="off">City
@@ -151,10 +151,22 @@
 ?>
 <script>
 var testContainer = document.getElementById("AJAXtest");
-var btn = document.getElementById("stateOption");
+var state = document.getElementById("stateOption");
+var usa = document.getElementById("USAOption");
+var city = document.getElementById("cityOption");
 
-btn.addEventListener("click", function() {
-  console.log("It works");
+state.addEventListener("select", function() {
+  console.log("State works");
+  renderHTML();
+});
+
+usa.addEventListener("select", function() {
+  console.log("USA works");
+  renderHTML();
+});
+
+city.addEventListener("select", function() {
+  console.log("City works");
   renderHTML();
 });
 
