@@ -65,7 +65,8 @@
 
 <div class="row">
   <div class="col-2">
-    <h4>Choose a Candidate</h4>
+    <h2 align="center">Select a</h2>
+    <h4 align="center">Candidate</h4>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
           // database ****I can't get the images to load!!*****
@@ -102,10 +103,12 @@
       <div class="form-row">
         <div class="col"></div>
         <div class="col">
-          <input type="date" class="form-control" value="2019-01-01" label="From">
+          <label>From</label>
+          <input type="date" class="form-control" value="2019-01-01">
         </div>
         <div class="col">
-          <input type="date" class="form-control" value="2019-12-31" label="To">
+          <label>From</label>
+          <input type="date" class="form-control" value="2019-12-31">
         </div>
         <div class="col"></div>
       </div>
@@ -122,7 +125,7 @@
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" align="center" class="btn btn-primary">Submit</button>
     </form>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   </div>
