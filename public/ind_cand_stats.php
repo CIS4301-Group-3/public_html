@@ -143,7 +143,7 @@
   oci_free_statement($query);
 ?>
 <script>
-var map = document.getElementById('usmap');
+var map = document.getElementById('map');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
