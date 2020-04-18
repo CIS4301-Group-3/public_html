@@ -18,11 +18,10 @@
   
   $start_date = '20190101';
   $end_date = '20191231';
+
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
-  
-  var_dump($candidate_array);
 ?>
 <?php $page_title = 'Individual Stats'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>

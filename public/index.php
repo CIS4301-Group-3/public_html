@@ -3,7 +3,6 @@
 <?php require_once('../private/initialize.php');
 
   $list_candidates = list_candidates();
-  //$num_candidates = oci_fetch_all($list_candidates, $candidate_array);
   $count = 0;
 
 ?>
