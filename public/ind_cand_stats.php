@@ -98,6 +98,7 @@
     <div class="text-center">
       <h2>Individual Candidate Statistics</h2>
     </div>
+
     <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
       <div class="form-row">
         <div class="col"></div>
@@ -127,16 +128,18 @@
           </label>
         </div>
       </div>
-      <div id="city_selector"></div>
-      <div class="centerItem" id="usmap">
+      <div id="usmap" style="border: 1px">
         <div id="map" style="display: none; width: 700px; height: 500px; align-items: center;"></div>
         <div id="clicked-state"></div>
+        <div id="city_selector"></div>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
+
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
   </div>
 </div>
 <?php
