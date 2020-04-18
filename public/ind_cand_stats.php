@@ -173,6 +173,9 @@ $('#map').usmap({
   labelBackingStyles: {
     fill: 'beige'
   },
+  labelTestStyles: {
+    fill: 'black'
+  },
   // The click action
   click: function(event, data) {
     $('#clicked-state')
