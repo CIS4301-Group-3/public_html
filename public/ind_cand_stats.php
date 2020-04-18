@@ -166,7 +166,6 @@ function handleCity(e) {
 }
 
 $('#map').usmap({
-  showLabels: true;
   // The click action
   click: function(event, data) {
     $('#clicked-state')
