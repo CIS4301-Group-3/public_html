@@ -29,8 +29,8 @@
   
   } else {
   
-    $start_date = '20190101';
-    $end_date = '20191231';
+    $start_date = '2019-01-01';
+    $end_date = '2019-12-31';
   
   }
 
