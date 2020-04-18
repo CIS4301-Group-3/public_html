@@ -65,8 +65,8 @@
 
 <div class="row">
   <div class="col-2">
-    <h2 align="center">Select a</h2>
-    <h4 align="center">Candidate</h4>
+    <h4 align="center">Select a</h4>
+    <h2 align="center">Candidate</h2>
     <!--<img src="images/show_images.php?id=Bernie+Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
     <?php // Trying to make code to dynamically add the candidates as they are added to the
           // database ****I can't get the images to load!!*****
@@ -76,9 +76,9 @@
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
       <a class="action"
         href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
-        <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+        <img align="center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
               alt="<?php echo $cand['CANDIDATE']; ?>" class="img-thumbnail">
-        <h6><?php echo $cand['CANDIDATE']; ?></h6>
+        <h6 align="center"><?php echo $cand['CANDIDATE']; ?></h6>
       </a>
     <?php $count++;
           }
@@ -89,7 +89,7 @@
       $count = 0;
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) {
         if ($id == $count) { ?>
-        <img src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
+        <img algin="center" src="<?php echo url_for('/images/show_image.php?id=' . $count);?>"
               alt="<?php echo $cand['CANDIDATE']; ?>" class="img-fluid">
     <?php } $count++;
         }
