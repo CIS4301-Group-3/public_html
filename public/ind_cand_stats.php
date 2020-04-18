@@ -9,11 +9,17 @@
   $id = $_GET['id'];
   $list_candidates = list_candidates();
   $i = 0;
+  $cand_exists = false;
   while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
     if ($i == $id) {
       $candidate = $row['CANDIDATE'];
+      $cand_exists = true;
     }
     $i++;
+  }
+  if (!$cand_exist)
+  {
+    redirect_to(url_for('/index.php'));
   }
   oci_free_statement($list_candidates);
 
