@@ -150,24 +150,24 @@
   oci_free_statement($query);
 ?>
 <script>
-var testContainer = document.getElementById("AJAXtest");
-var state = document.getElementById("stateOption");
-var usa = document.getElementById("USAOption");
+var testContainer = document.getElementById('AJAXtest');
+var state = document.getElementById('stateOption');
+var usa = document.getElementById('USAOption');
 var city = document.getElementById("cityOption");
 
-state.addEventListener("change", function() {
-  console.log("State works");
-  renderHTML();
+state.addEventListener('change', function() {
+  console.log('State works');
+  //renderHTML();
 });
 
-usa.addEventListener("change", function() {
-  console.log("USA works");
-  renderHTML();
+usa.addEventListener('change', function() {
+  console.log('USA works');
+  //renderHTML();
 });
 
 city.addEventListener("change", function() {
   console.log("City works");
-  renderHTML();
+  //renderHTML();
 });
 
 function renderHTML() {
