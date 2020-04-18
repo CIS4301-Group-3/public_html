@@ -41,7 +41,6 @@
         day = parseInt(date.substring(6, 8));
         newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
       }
-      console.log(newDonationsArray);
       window.onload = function () {
       
       var chart = new CanvasJS.Chart("chartContainer", {
@@ -128,6 +127,7 @@
           </label>
         </div>
       </div>
+      <div id="AJAXtest"></div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -150,10 +150,16 @@
   oci_free_statement($query);
 ?>
 <script>
+var testContainer = document.getElementById("AJAXTest");
 var btn = document.getElementById("stateOption");
 
 btn.addEventListener("click", function() {
   console.log("It works");
+  renderHTML();
 });
+
+function renderHTML() {
+  testContainer.insertAdjacentHTML('beforeend', 'testing 123')
+}
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
