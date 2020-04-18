@@ -61,13 +61,6 @@
       chart.render();
       
       }
-
-
-      var btn = document.getElementById("stateOption");
-
-      btn.addEventListener("click", function() {
-        console.log("It works");
-      });
 </script>
 
 <div class="row">
@@ -156,4 +149,11 @@
   echo "</table>\n";*/
   oci_free_statement($query);
 ?>
+<script>
+var btn = document.getElementById("stateOption");
+
+btn.addEventListener("click", function() {
+  console.log("It works");
+});
+</script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
