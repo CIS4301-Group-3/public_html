@@ -16,9 +16,8 @@
     $i++;
   }
   
-  //$candidate = 'Bernie Sanders';
-  $start_date = '20190204';
-  $end_date = '20191225';
+  $start_date = '20190101';
+  $end_date = '20191231';
   $query = donations_over_time_usa($candidate, $start_date, $end_date);
   $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
