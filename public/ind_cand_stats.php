@@ -17,7 +17,7 @@
   }
   oci_free_statement($list_candidates);
 
-  if(is_post_request()) {
+  /*if(is_post_request()) {
 
     // Handle form values sent by new.php
   
@@ -27,12 +27,12 @@
     $query = donations_over_time_usa($candidate, $start_date, $end_date);
     $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
-  } else {
+  } else {*/
   
     $start_date = '2019-01-01';
     $end_date = '2019-12-31';
   
-  }
+  //}
 
   
 
