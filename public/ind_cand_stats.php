@@ -169,7 +169,10 @@ $('#map').usmap({
   stateStyles: {
 	      fill: 'beige'
       },
-  showLabels: false,
+  showLabels: true,
+  labelBackingStyles: {
+    fill: 'beige'
+  },
   // The click action
   click: function(event, data) {
     $('#clicked-state')
