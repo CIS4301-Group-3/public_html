@@ -128,8 +128,8 @@
           </label>
         </div>
       </div>
-      <div id="usmap" style="border: 1px solid black">
-        <div id="map" class="centerItem"></div>
+      <div id="usmap" class="centerItem">
+        <div id="map" class="mapSize"></div>
         <div id="clicked-state"></div>
         <div id="city_selector"></div>
       </div>
