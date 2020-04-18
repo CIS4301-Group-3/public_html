@@ -174,7 +174,8 @@ $('#map').usmap({
     fill: 'beige'
   },
   labelTestStyles: {
-    fill: 'black'
+    fill: 'black',
+    'font-size': '10px'
   },
   // The click action
   click: function(event, data) {
