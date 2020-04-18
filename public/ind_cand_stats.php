@@ -127,9 +127,8 @@
           </label>
         </div>
       </div>
-      <div id="usmap"></div>
       <div id="city_selector"></div>
-      <div display="none">
+      <div class="centerItem" id="usmap">
         <div id="map" class="centerItem" style="width: 350px; height: 250px;"></div>
       </div>
       <!--<div id="clicked-state"></div>-->
@@ -144,7 +143,7 @@
   oci_free_statement($query);
 ?>
 <script>
-var map = document.getElementById('map');
+var map = document.getElementById('usmap');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
@@ -163,8 +162,7 @@ function handleUSA(e) {
 }
 
 function handleCity(e) {
-  map.textContent = `The field's value is
-      ${e.target.value.length} character(s) long. And this is a City!!`;
+  map.style.display = "block";
 }
 
 $('#map').usmap({

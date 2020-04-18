@@ -1,3 +1,4 @@
 .centerItem{
-  align-items: center; 
+  align-items: center;
+  display: none;
 }
