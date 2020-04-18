@@ -160,6 +160,7 @@ state.onchange = handleChange;
 function handleChange(e) {
   testContainer.textContent = `The field's value is
       ${e.target.value.length} character(s) long.`;
+}
 
 state.addEventListener('change', function() {
   console.log('State works');
