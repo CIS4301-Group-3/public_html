@@ -61,6 +61,13 @@
       chart.render();
       
       }
+
+
+      var btn = document.getElementByID("stateOption");
+
+      btn.addEventListerner("click", function() {
+        console.log("It works");
+      })
 </script>
 
 <div class="row">
@@ -118,13 +125,13 @@
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked>USA
+            <input type="radio" name="options" id="USAOption" autocomplete="off" checked>USA
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option2" autocomplete="off">State
+            <input type="radio" name="options" id="stateOption" autocomplete="off">State
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option3" autocomplete="off">City
+            <input type="radio" name="options" id="cityOption" autocomplete="off">City
           </label>
         </div>
       </div>
