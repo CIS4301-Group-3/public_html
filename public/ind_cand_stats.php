@@ -129,7 +129,9 @@
       </div>
       <div id="usmap"></div>
       <div id="city_selector"></div>
-      <div id="map" style="width: 350px; height: 250px;"></div>
+      <div class="text-center">
+        <div id="map" style="width: 350px; height: 250px;"></div>
+      </div>
       <div id="clicked-state"></div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
