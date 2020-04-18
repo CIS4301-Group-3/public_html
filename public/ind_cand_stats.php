@@ -155,17 +155,17 @@ var state = document.getElementById("stateOption");
 var usa = document.getElementById("USAOption");
 var city = document.getElementById("cityOption");
 
-state.addEventListener("select", function() {
+state.addEventListener("change", function() {
   console.log("State works");
   renderHTML();
 });
 
-usa.addEventListener("select", function() {
+usa.addEventListener("change", function() {
   console.log("USA works");
   renderHTML();
 });
 
-city.addEventListener("select", function() {
+city.addEventListener("change", function() {
   console.log("City works");
   renderHTML();
 });
