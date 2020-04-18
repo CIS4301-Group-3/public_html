@@ -112,7 +112,7 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="form-row" align="center">
+      <div align="center">
         <label align="center">Filter Location By:</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
