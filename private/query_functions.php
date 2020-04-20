@@ -30,7 +30,7 @@
     global $db;
     
     //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
-    $sql = "SELECT * ";
+    $sql = "SELECT IMAGE ";
     $sql .= "FROM ELEHMANN.CAMPAIGN ";
     $sql .= "WHERE ELEHMANN.CAMPAIGN.CANDIDATE = :candidate_bv";
     //echo $sql;
@@ -38,7 +38,18 @@
     oci_bind_by_name($query, ":candidate_bv", $candidate);
     oci_execute($query);
     confirm_result_set($query);
-    return $query;
+    $row = oci_fetch_array($query, OCI_ASSOC);
+    if(!$row){
+      echo "Error!";
+    }
+    else{
+      $imageData = $row['IMAGE']->load();
+      //header("Content-type: image/jpeg");
+      //print $imageData;
+      //print('<img src="data:image/jpeg;base64,'.base64_encode($imageData).'" />');
+      return $imageData;
+    }
+    //return $query;
   }
 
   function list_candidates() {
