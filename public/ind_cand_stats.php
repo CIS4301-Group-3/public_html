@@ -152,7 +152,7 @@
         </div>
       </div>
       <div id="usmap" class="centerItem">
-        <div id="map" class="mapSize"></div>
+        <div id="map" class="mapSize" onclick="GetCitiesByState();"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
       <div id="state_selected" class="centerItem">
@@ -253,5 +253,10 @@ $(document).ready(function(){
     });
   });
 });
+
+function GetCitiesByState() {
+  var state = $('#clicked-state').val();
+  console.log(state);
+}
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
