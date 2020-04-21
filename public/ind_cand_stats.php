@@ -247,11 +247,11 @@ $('#map').usmap({
             txt += "<option>" + myObj[x]['CITY'] + "</option>";
           }
           document.getElementById("city_dropdown").innerHTML = txt;
+          $('#city_dropdown').selectpicker('refresh');
         }
     };
     xmlhttp.open("GET", "php/cities.php?state=" + state, true);
     xmlhttp.send();
-    $('#city_dropdown').selectpicker('refresh');
   }
 });
 
