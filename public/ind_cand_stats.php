@@ -108,10 +108,10 @@
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
       <a class="action"
         href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
-	<?php
-	  $imageData = candidate_photo($cand['CANDIDATE']);
-	  print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-thumbnail"/>');
-	?>
+        <?php
+          $imageData = candidate_photo($cand['CANDIDATE']);
+          print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-thumbnail"/>');
+        ?>
         <h6 class="text-center"><?php echo $cand['CANDIDATE']; ?></h6>
       </a>
     <?php $count++;
@@ -124,7 +124,7 @@
     print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-fluid" />');
 	?>
   </div>
-  <div class="col-8" id="content">
+  <div class="col-8" id="content" class="overflow-auto">
     <div>
       <h1 class="text-center"><?php echo $candidate; ?> Statistics</h1>
     </div>
