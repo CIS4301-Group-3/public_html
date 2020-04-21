@@ -127,7 +127,7 @@
   </div>
   <div class="col-8" id="content">
     <div class="text-center">
-      <h2>Individual Candidate Statistics</h2>
+      <h2><?php echo $candidate; ?> Statistics</h2>
     </div>
 
     <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
