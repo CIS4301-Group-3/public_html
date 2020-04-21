@@ -170,9 +170,7 @@
           <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
-        <select id="city_dropdown">
-                
-        </select>
+        <select id="city_dropdown" class="selectpicker"></select>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -248,7 +246,6 @@ $('#map').usmap({
               for (x in myObj) {
                 txt += "<option>" + myObj[x]['CITY'] + "</option>";
               }
-              console.log(txt);
               document.getElementById("city_dropdown").innerHTML = txt;
             }
         };
