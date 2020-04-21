@@ -35,6 +35,7 @@
 
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
+    $display = 'block';
 
     if ($locationOption == 'USA') {
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
@@ -58,6 +59,7 @@
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
     $selected_state = '';
+    $display = 'none';
 
   }
   
@@ -181,7 +183,7 @@
 
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-    <div class="text-center" style="margin-top: 20px">
+    <div class="text-center" style="margin-top: 20px; display: <?php echo $display ?>;">
       <?php if($locationOption == 'USA') {
         echo "<h3>List of Stats from the US</h3>";
       } else if ($locationOption == 'State') {
@@ -193,7 +195,14 @@
 
       <div class="row"> 
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
-        <div class ="col-6">Test</div>
+        <div class ="col-6" style="text-align: left">$
+          <?php while($cand = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+            if ($cand['CANDIDATE'] == $candidate) {
+              echo $cand['TOTAL_DONATIONS'];
+            }
+          }?>
+          
+        </div>
       </div>
 
     </div>
