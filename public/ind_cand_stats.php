@@ -195,15 +195,14 @@
 
       <div class="row"> 
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
-        <div class ="col-6" style="text-align: left">$
-          <?php while($cand = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
-            echo $cand;
-            if ($cand['CANDIDATE'] == $candidate) {
-              echo $cand['Total_Donations'];
+        <div class ="col-6" style="text-align: left">$<?php
+          while($donations = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+            echo $donations;
+            if ($donations['CANDIDATE'] == $candidate) {
+              echo $donations['Total_Donations'];
             }
-          }?>
-          
-        </div>
+          }
+          oci_free_statement($query2); ?></div>
       </div>
 
     </div>
