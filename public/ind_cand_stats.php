@@ -240,17 +240,18 @@ $('#map').usmap({
     var state = data.name;
     var txt = '';
     var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              myObj = JSON.parse(this.responseText);
-              for (x in myObj) {
-                txt += "<option>" + myObj[x]['CITY'] + "</option>";
-              }
-              document.getElementById("city_dropdown").innerHTML = txt;
-            }
-        };
-        xmlhttp.open("GET", "php/cities.php?state=" + state, true);
-        xmlhttp.send();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          myObj = JSON.parse(this.responseText);
+          for (x in myObj) {
+            txt += "<option>" + myObj[x]['CITY'] + "</option>";
+          }
+          document.getElementById("city_dropdown").innerHTML = txt;
+        }
+    };
+    xmlhttp.open("GET", "php/cities.php?state=" + state, true);
+    xmlhttp.send();
+    $('#city_dropdown').selectpicker('refresh');
   }
 });
 
