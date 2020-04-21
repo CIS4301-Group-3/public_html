@@ -39,13 +39,17 @@
     if ($locationOption == 'USA') {
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      $query2 = total_donations_received($start_date, $end_date);
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      //$query2 = total_donations_received($start_date, $end_date, $state);
     } else if ($locationOption == 'City') {
       $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      //$query2 = total_donations_received($start_date, $end_date, $state, $city);
     }
+
       
   } else {
   
@@ -177,6 +181,23 @@
 
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
+    <div class="text-center">
+      <?php if($locationOption == 'USA') {
+        echo "<h3>List of Stats in USA</h3>";
+      } else if ($locationOption == 'State') {
+        echo "<h3>List of Stats in " . $selected_state . "</h3>";
+      } else if ($locationOption == 'City') {
+        echo "<h3>List of State in " . $selected_city . ", " . $selected_state . "</h3";
+      }
+      ?>
+
+      <table>
+        <tr>
+          <td>Total Amount of Money Raised</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 <?php
