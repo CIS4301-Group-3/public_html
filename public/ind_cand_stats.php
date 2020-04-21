@@ -171,7 +171,7 @@
       </div>
       <div id="city_selector" style="display: none" class="text-center">
         <select id="city_dropdown">
-          <option>Test</option>        
+                
         </select>
       </div>
       <div class="text-center">
