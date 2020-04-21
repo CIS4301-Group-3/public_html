@@ -99,7 +99,7 @@
 </script>
 
 <div class="row">
-  <div class="col-2">
+  <div class="col-2" style="position: fixed; ">
     <h4 class="text-center">Select a</h4>
     <h2 class="text-center">Candidate</h2>
     
@@ -118,7 +118,7 @@
           }
           oci_free_statement($candidate_array); ?>
   </div>
-  <div class="col-2">
+  <div class="col-2" style="position: fixed; ">
 	<?php
 	  $imageData = candidate_photo($candidate);
     print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-fluid" />');
