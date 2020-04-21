@@ -245,7 +245,7 @@ $('#map').usmap({
               document.getElementById("city_dropdown").innerHTML = txt;
             }
         };
-        xmlhttp.open("GET", "gethint.php?state=" + state, true);
+        xmlhttp.open("GET", "php/cities.php?state=" + state, true);
         xmlhttp.send();
   }
 });
