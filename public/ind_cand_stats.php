@@ -119,15 +119,14 @@
           oci_free_statement($candidate_array); ?>
   </div>
   <div class="col-2">
-  <h2 class="text-center"><?php echo $candidate; ?></h2>
 	<?php
 	  $imageData = candidate_photo($candidate);
     print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-fluid" />');
 	?>
   </div>
   <div class="col-8" id="content">
-    <div class="text-center">
-      <h2><?php echo $candidate; ?> Statistics</h2>
+    <div>
+      <h1><?php echo $candidate; ?> Statistics</h1>
     </div>
 
     <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
