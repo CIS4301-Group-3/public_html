@@ -170,8 +170,7 @@
           <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
-        <select class="selectpicker" id="city_dropdown"
-                multiple title="Choose a City">
+        <select id="city_dropdown">
           <option>Test</option>        
         </select>
       </div>
