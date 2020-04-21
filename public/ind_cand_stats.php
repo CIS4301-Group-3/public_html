@@ -44,10 +44,9 @@
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
         //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
-          $donations = $row['TOTAL_DONATIONS'];
+          $donations = number_format($row['TOTAL_DONATIONS']);
         }
       }
-      //$donations = 1000000;
       
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
