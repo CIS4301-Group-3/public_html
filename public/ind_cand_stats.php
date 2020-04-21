@@ -158,7 +158,7 @@
       </div>
       <div id="usmap" class="centerItem">
         <div id="map" class="mapSize"></div>
-        <input type="text" name="selected_state" style="display: none" value="" id="clicked-state"></div>
+        <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
         <div id="city_selector"></div>
       </div>
       <div class="text-center">
