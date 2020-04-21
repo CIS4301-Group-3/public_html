@@ -240,7 +240,7 @@ $('#map').usmap({
       .val(data.name);
     $('#state_text')
       .text('State Selected: '+data.name);
-    $('#city-selector')
+    $('#city_selector')
       .attr('style', 'display: block');
   }
 });
