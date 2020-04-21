@@ -40,14 +40,32 @@
     if ($locationOption == 'USA') {
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+
       $query2 = total_donations_received($format_start_date, $format_end_date);
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
         //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
-          $donations = number_format($row['TOTAL_DONATIONS']);
+          $money = number_format($row['TOTAL_DONATIONS']);
         }
       }
-      
+      $query3 = num_donations($format_start_date, $format_end_date);
+      while($row = oci_fetch_array($query3, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
+        if ($row['CANDIDATE'] == $candidate) {
+          $num_donations = number_format($row['TOTAL_DONATIONS']);
+        }
+      }
+      //$query4 = donation_size($format_start_date, $format_end_date);
+      $donation_size;
+      //$query5 = num_donors($format_start_date, $format_end_date);
+      $num_donors;
+      //$query6 = num_donations_per_donor($format_start_date, $format_end_date);
+      $num_donations_per_donor;
+      //$query7 = repeat_donors($format_start_date, $format_end_date);
+      $repeat_donors;
+      //$query8 = donation_per_capita($format_start_date, $format_end_date);
+      $donation_per_capita;
+
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -58,8 +76,14 @@
       //$query2 = total_donations_received($start_date, $end_date, $state, $city);
     }
     oci_free_statement($query);
-    oci_free_statement($query2); 
-      
+    oci_free_statement($query2);
+    oci_free_statement($query3);
+    //oci_free_statement($query4);
+    //oci_free_statement($query5);
+    //oci_free_statement($query6);  
+    //oci_free_statement($query7);
+    //oci_free_statement($query8);
+
   } else {
   
     $start_date = '2019-01-01';
@@ -203,7 +227,37 @@
 
       <div class="row">
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
-        <div class ="col-6" style="text-align: left">$<?php echo $donations?></div>
+        <div class ="col-6" style="text-align: left">$<?php echo $money?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Total Number of Donations</div>
+        <div class ="col-6" style="text-align: left"><?php echo $num_donations?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Average Donation Size</div>
+        <div class ="col-6" style="text-align: left">$<?php echo $donation_size?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Total Number of Donors</div>
+        <div class ="col-6" style="text-align: left"><?php echo $num_donors?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Average Number of Donations Per Donor</div>
+        <div class ="col-6" style="text-align: left"><?php echo $num_donations_per_donor?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Number of Repeat Donors</div>
+        <div class ="col-6" style="text-align: left"><?php echo $repeat_donors?></div>
+      </div>
+
+      <div class="row">
+        <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
+        <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
 
     </div>
