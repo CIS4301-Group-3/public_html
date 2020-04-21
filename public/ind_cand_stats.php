@@ -170,7 +170,8 @@
           <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
-        <select id="city_dropdown" class="selectpicker"></select>
+        <select id="city_dropdown" class="selectpicker" data-live-search="true"
+                title="Select A City"></select>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
