@@ -43,7 +43,6 @@
 
       $query2 = donation_data_us($format_start_date, $format_end_date);
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
-        //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
@@ -90,7 +89,9 @@
       var year;
       var month;
       var day;
+
       if (donationsArray != null) {
+
         for (var i=0;i<donationsArray.length;i++)
         {
           date = donationsArray[i]['DAY'];
@@ -99,8 +100,8 @@
           day = parseInt(date.substring(6, 8));
           newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
         }
+
         window.onload = function () {
-        
         var chart = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
           exportEnabled: true,
@@ -116,7 +117,24 @@
           }]
         });
         chart.render();
+
+        var chart2 = new CanvasJS.Chart("chart2Container", {
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: "<?php echo $candidate?> Donations Over Time"
+          },
+          axisY: {
+            title: "Amount (USD)"
+          },
+          data: [{
+            type: "line",
+            dataPoints: newDonationsArray
+          }]
+        });
+        chart.render();
         }
+
       }
 </script>
 
@@ -228,6 +246,8 @@
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
+
+      <div id="chart2Container" style="height: 500px; width: 100%;"></div>
 
     </div>
   </div>
