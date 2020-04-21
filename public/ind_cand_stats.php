@@ -173,8 +173,8 @@
         <select id="city_dropdown" class="selectpicker" data-live-search="true"
                 title="Select A City"></select>
       </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary" style="padding: 100px">Submit</button>
+      <div class="text-center" style="padding: 10px">
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
 
