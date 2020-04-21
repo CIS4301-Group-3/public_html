@@ -146,7 +146,7 @@
         <div class="col"></div>
       </div>
       <div class="text-center">
-        <div class="text-center" style="padding top: 5px">
+        <div class="text-center" style="margin-top: 5px">
           <label>Filter Location By:</label>
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
