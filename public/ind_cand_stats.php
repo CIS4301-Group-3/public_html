@@ -31,7 +31,7 @@
     $end_date = $_POST['end_date'];
     $locationOption = $_POST['locationOption'];
     $selected_state = $_POST['selected_state'];
-    //$selected_city = $_POST['selected_city'];
+    $selected_city = $_POST['selected_city'];
 
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
@@ -40,11 +40,11 @@
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
     } else if ($locationOption == 'State') {
-      //$query = donations_over_time_state($candidate, $format_start_date, $format_end_date, $selected_state);
-      //$nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
+      $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
     } else if ($locationOption == 'City') {
-      //$query = donations_over_time_city($candidate, $format_start_date, $format_end_date, $selected_state, $selected_city);
-      //$nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
+      $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
     }
       
   } else {
@@ -167,7 +167,7 @@
           <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
-        <select id="city_dropdown" class="selectpicker" data-live-search="true"
+        <select id="city_dropdown" name="selected_city" class="selectpicker" data-live-search="true"
                 title="Select A City"></select>
       </div>
       <div class="text-center" style="padding: 10px">
@@ -242,7 +242,7 @@ $('#map').usmap({
         if (this.readyState == 4 && this.status == 200) {
           myObj = JSON.parse(this.responseText);
           for (x in myObj) {
-            txt += "<option>" + myObj[x]['CITY'] + "</option>";
+            txt += "<option value='" + myObj[x]['CITY'] + "'>" + myObj[x]['CITY'] + "</option>";
           }
           document.getElementById("city_dropdown").innerHTML = txt;
           $('#city_dropdown').selectpicker('refresh');
