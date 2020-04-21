@@ -181,7 +181,7 @@
 
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-    <div class="text-center">
+    <div class="text-center" style="margin-top: 20px">
       <?php if($locationOption == 'USA') {
         echo "<h3>List of Stats in USA</h3>";
       } else if ($locationOption == 'State') {
@@ -193,7 +193,9 @@
 
       <table>
         <tr>
+          <td></td>
           <td>Total Amount of Money Raised</td>
+          <td>Test</td>
           <td></td>
         </tr>
       </table>
