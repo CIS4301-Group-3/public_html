@@ -193,15 +193,15 @@
       }
       ?>
 
-      <div class="row"> 
+      <div class="row">
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
         <?php
-          while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
-            if ($row['CANDIDATE'] == $candidate) {
-              echo '<div class ="col-6" style="text-align: left">$' . $row['Total_Donations'];
+          while($donation = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+            if ($donation['CANDIDATE'] == $candidate) {
+              echo '<div class ="col-6" style="text-align: left">$' . $donation['Total_Donations'] . '</div>';
             }
           }
-          oci_free_statement($query2); ?></div>
+          oci_free_statement($query2); ?>
       </div>
 
     </div>
