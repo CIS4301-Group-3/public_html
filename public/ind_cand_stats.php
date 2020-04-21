@@ -203,7 +203,7 @@ function handleUSA(e) {
 
 function handleCity(e) {
   map.style.display = "block";
-  //cityOptions.style.display = "block";
+  cityOptions.style.display = "block";
   stateText.style.display = "block";
 
 }
@@ -227,8 +227,6 @@ $('#map').usmap({
       .val(data.name);
     $('#state_text')
       .text('State Selected: '+data.name);
-    $('#city_selector')
-      .attr('style', 'display: block');
     var state = data.name;
     var txt = '';
     var xmlhttp = new XMLHttpRequest();
