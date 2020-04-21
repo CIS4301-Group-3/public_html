@@ -46,10 +46,6 @@
     $format_end_date = format_date($end_date);
   
   }
-
-  
-
-  
   
 ?>
 <?php $page_title = 'Individual Stats'; ?>
@@ -158,6 +154,9 @@
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
+      <div id="state_selected" class="centerItem">
+          <h6 id="state_text">Select a State</h6>
+      </div>
       <div id="city_selector" style="display: none" class="text-center">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a City
@@ -231,6 +230,8 @@ $('#map').usmap({
   click: function(event, data) {
     $('#clicked-state')
       .val(data.name);
+    $('#state_text')
+      .text('State Selected: '+data.name);
   }
 });
 
