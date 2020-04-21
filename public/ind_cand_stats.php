@@ -41,11 +41,12 @@
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
       $query2 = total_donations_received($format_start_date, $format_end_date);
-      while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+      /*while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
         if ($row['CANDIDATE'] == $candidate) {
           $donations = $donation['Total_Donations'];
         }
-      }
+      }*/
+      $donations = 1000000;
       
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
