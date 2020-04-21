@@ -45,9 +45,9 @@
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
     $selected_state = '';
-    $USAchecked = 'false';
-    $stateChecked = 'true';
-    $cityChecked = 'false';
+    $USAchecked = '';
+    $stateChecked = 'checked';
+    $cityChecked = '';
 
   
   }
@@ -146,13 +146,13 @@
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="USAOption" autocomplete="off" checked="<?php echo h($USAchecked); ?>">USA
+            <input type="radio" name="options" id="USAOption" autocomplete="off" <?php echo h($USAchecked); ?>>USA
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="stateOption" autocomplete="off" checked="<?php echo h($stateChecked); ?>">State
+            <input type="radio" name="options" id="stateOption" autocomplete="off" <?php echo h($stateChecked); ?>>State
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="cityOption" autocomplete="off" checked="<?php echo h($cityChecked); ?>">City
+            <input type="radio" name="options" id="cityOption" autocomplete="off" <?php echo h($cityChecked); ?>>City
           </label>
         </div>
       </div>
