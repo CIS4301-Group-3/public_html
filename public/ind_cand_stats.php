@@ -124,13 +124,7 @@
 
     <form action="<?php echo url_for('/ind_cand_stats.php?id=' . h(u($id))); ?>" method="post">
       <div class="form-row">
-        <div class="col">
-          <select class="selectpicker" data-live-search="true">
-            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-            <option data-tokens="mustard">Burger, Shake and a Smile</option>
-            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-          </select>
-        </div>
+        <div class="col"></div>
         <div class="col">
           <label>From</label>
           <input type="date" name="start_date" class="form-control" value="<?php echo h($start_date); ?>">
@@ -165,11 +159,7 @@
           <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a City
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu" id="city_dropdown"></ul>
-        </div>
+        <select class="selectpicker" id="city_dropdown" data-live-search="true"></select>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -244,9 +234,8 @@ $('#map').usmap({
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               myObj = JSON.parse(this.responseText);
-              txt += '<input class="form-control" id="myInput" type="text" placeholder="Search..">'
               for (x in myObj) {
-                txt += "<li>" + myObj[x]['CITY'] + "</li>";
+                txt += "<option>" + myObj[x]['CITY'] + "</option>";
               }
               document.getElementById("city_dropdown").innerHTML = txt;
             }
@@ -254,15 +243,6 @@ $('#map').usmap({
         xmlhttp.open("GET", "php/cities.php?state=" + state, true);
         xmlhttp.send();
   }
-});
-
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".dropdown-menu li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
 });
 
 </script>
