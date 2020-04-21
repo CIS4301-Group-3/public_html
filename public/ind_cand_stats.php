@@ -189,7 +189,7 @@
 ?>
 <script>
 var map = document.getElementById('map');
-var stateSelected = document.getElementById('clicked_state');
+var stateSelected = document.getElementById('clicked-state');
 var stateText = document.getElementById('state_text');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
