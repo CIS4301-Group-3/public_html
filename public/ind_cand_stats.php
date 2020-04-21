@@ -45,7 +45,9 @@
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
     $selected_state = '';
-    $USAchecked = 'true';
+    $USAchecked = 'false';
+    $stateChecked = 'true';
+    $cityChecked = 'false';
 
   
   }
@@ -147,10 +149,10 @@
             <input type="radio" name="options" id="USAOption" autocomplete="off" checked="<?php echo h($USAchecked); ?>">USA
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="stateOption" autocomplete="off">State
+            <input type="radio" name="options" id="stateOption" autocomplete="off" checked="<?php echo h($stateChecked); ?>">State
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="cityOption" autocomplete="off">City
+            <input type="radio" name="options" id="cityOption" autocomplete="off" checked="<?php echo h($cityChecked); ?>">City
           </label>
         </div>
       </div>
