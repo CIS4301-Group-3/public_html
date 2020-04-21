@@ -30,15 +30,23 @@
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $locationOption = $_POST['locationOption'];
-    echo $locationOption;
     $selected_state = $_POST['selected_state'];
     //$selected_city = $_POST['selected_city'];
+
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
 
-    $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
-    $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-  
+    if ($locationOption == 'USA') {
+      $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
+      $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    } else if ($locationOption == 'State') {
+      //$query = donations_over_time_state($candidate, $format_start_date, $format_end_date, $selected_state);
+      //$nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    } else if ($locationOption == 'City') {
+      //$query = donations_over_time_city($candidate, $format_start_date, $format_end_date, $selected_state, $selected_city);
+      //$nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    }
+      
   } else {
   
     $start_date = '2019-01-01';
@@ -46,11 +54,7 @@
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
     $selected_state = '';
-    $USAchecked = '';
-    $stateChecked = '';
-    $cityChecked = '';
 
-  
   }
   
 ?>
@@ -243,6 +247,7 @@ $('#map').usmap({
               for (x in myObj) {
                 txt += "<option>" + myObj[x]['CITY'] + "</option>";
               }
+              console.log(txt);
               document.getElementById("city_dropdown").innerHTML = txt;
             }
         };
