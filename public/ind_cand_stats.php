@@ -47,7 +47,7 @@
         if ($row['CANDIDATE'] == $candidate) {
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
-          $donation_size = number_format($row['DONATION_SIZE'], 2);
+          //$donation_size = number_format($row['DONATION_SIZE'], 2);
         }
       }
       //$query3 = num_donors($format_start_date, $format_end_date);
