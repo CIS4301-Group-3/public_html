@@ -154,8 +154,8 @@
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
-      <div id="state_selected" class="centerItem" style="display: none">
-          <h6 id="state_text">Select a State</h6>
+      <div id="state_selected" class="centerItem">
+          <h6 id="state_text" style="display: none">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
         <div class="dropdown">
@@ -188,7 +188,7 @@
 ?>
 <script>
 var map = document.getElementById('map');
-var stateSelected = document.getElementById('state_selected');
+var stateSelected = document.getElementById('state_text');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
