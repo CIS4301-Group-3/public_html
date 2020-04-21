@@ -159,20 +159,20 @@
       <div id="usmap" class="centerItem">
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
-        <div id="city_selector">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <input class="form-control" id="myInput" type="text" placeholder="Search..">
-              <li><a href="#">HTML</a></li>
-              <li><a href="#">CSS</a></li>
-              <li><a href="#">JavaScript</a></li>
-              <li><a href="#">jQuery</a></li>
-              <li><a href="#">Bootstrap</a></li>
-              <li><a href="#">Angular</a></li>
-            </ul>
-          </div>
+      </div>
+      <div id="city_selector" style="display: none">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">jQuery</a></li>
+            <li><a href="#">Bootstrap</a></li>
+            <li><a href="#">Angular</a></li>
+          </ul>
         </div>
       </div>
       <div class="text-center">
@@ -208,6 +208,8 @@ function handleUSA(e) {
 
 function handleCity(e) {
   map.style.display = "block";
+  cityOptions.style.display = "block";
+
 }
 
 $('#map').usmap({
