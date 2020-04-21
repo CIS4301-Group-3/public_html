@@ -188,7 +188,8 @@
 ?>
 <script>
 var map = document.getElementById('map');
-var stateSelected = document.getElementById('state_text');
+var stateSelected = document.getElementById('clicked_state');
+var stateText = document.getElementById('state_text');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
@@ -201,19 +202,21 @@ city.onchange = handleCity;
 function handleState(e) {
   map.style.display = "block";
   cityOptions.style.display = "none";
-  stateSelected.style.display = "block";
+  stateText.style.display = "block";
 }
 
 function handleUSA(e) {
   map.style.display = "none";
   cityOptions.style.display = "none";
-  stateSelected.style.display = "none";
+  stateText.style.display = "none";
+  stateSelected.value = "";
+  stateText.text = "";
 }
 
 function handleCity(e) {
   map.style.display = "block";
   cityOptions.style.display = "block";
-  stateSelected.style.display = "block";
+  stateText.style.display = "block";
 
 }
 
