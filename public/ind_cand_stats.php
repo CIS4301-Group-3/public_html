@@ -30,6 +30,7 @@
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $selected_state = $_POST['selected_state'];
+    //$selected_city = $_POST['selected_city'];
     echo $selected_state;
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
@@ -160,18 +161,20 @@
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
-      <div id="city_selector" style="display: none">
+      <div id="city_selector" style="display: none" class="centerItem">
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a City
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <input class="form-control" id="myInput" type="text" placeholder="Search..">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">jQuery</a></li>
-            <li><a href="#">Bootstrap</a></li>
-            <li><a href="#">Angular</a></li>
+            <?php while($city = oci_fetch_array($list_cities, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
+              <li>
+                <a class="action"
+                  href="">
+                  <?php echo $cand['CANDIDATE']; ?></a>
+              </li>
+            <?php }
+                  oci_free_statement($list_candidates); ?>
           </ul>
         </div>
       </div>
@@ -229,6 +232,7 @@ $('#map').usmap({
   click: function(event, data) {
     $('#clicked-state')
       .val(data.name);
+    <?php $list_cities = get_cities( ?> data.name <?php );
   }
 });
 
