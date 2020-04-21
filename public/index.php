@@ -24,12 +24,17 @@
     </p>
     <h2 class="text-center"><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
     <h2 class="text-center">Individual Candidate Page</h2>
-    <ul>
+    <ul style="display: inline-block">
     <?php while($cand = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
         <li>
           <a class="action"
-            href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
-            <?php echo $cand['CANDIDATE']; ?></a>
+             href="<?php echo url_for('/ind_cand_stats.php?id=' . $count); ?>">
+            <?php
+              $imageData = candidate_photo($cand['CANDIDATE']);
+              print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-thumbnail"/>');
+            ?>
+            <h6 class="text-center"><?php echo $cand['CANDIDATE']; ?></h6>
+          </a>
         </li>
       <?php $count++;
             }
