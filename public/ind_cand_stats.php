@@ -44,6 +44,9 @@
     $end_date = '2019-12-31';
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
+    $selected_state = '';
+    $checked = 'checked';
+
   
   }
   
@@ -141,7 +144,7 @@
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="USAOption" autocomplete="off" checked>USA
+            <input type="radio" name="options" id="USAOption" autocomplete="off" <?php echo h($checked); ?>>USA
           </label>
           <label class="btn btn-secondary">
             <input type="radio" name="options" id="stateOption" autocomplete="off">State
@@ -153,7 +156,8 @@
       </div>
       <div id="usmap" class="centerItem">
         <div id="map" class="mapSize"></div>
-        <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
+        <input type="text" name="selected_state" style="display: none"
+               value="<?php echo h($selected_state); ?>" id="clicked-state">
       </div>
       <div id="state_selected" class="centerItem">
           <h6 id="state_text" style="display: none">Select a State</h6>
