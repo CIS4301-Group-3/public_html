@@ -232,7 +232,6 @@ $('#map').usmap({
   click: function(event, data) {
     $('#clicked-state')
       .val(data.name);
-    <?php $list_cities = get_cities( ?> data.name <?php );
   }
 });
 
