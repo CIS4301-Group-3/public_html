@@ -162,17 +162,7 @@
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a City
           <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">
-            <?php while($city = oci_fetch_array($list_cities, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
-              <li>
-                <a class="action"
-                  href="">
-                  <?php echo $city['CITY']; ?></a>
-              </li>
-            <?php }
-                  oci_free_statement($list_candidates); ?>
-          </ul>
+          <ul class="dropdown-menu" id="city_dropdown"></ul>
         </div>
       </div>
       <div class="text-center">
@@ -235,13 +225,28 @@ $('#map').usmap({
     'font-weight': 300
   },
   // The click action
-  click: function(event, data) {
+  click: function(event, data) { 
     $('#clicked-state')
       .val(data.name);
     $('#state_text')
       .text('State Selected: '+data.name);
     $('#city_selector')
       .attr('style', 'display: block');
+    var state = data.name;
+    var txt = '';
+    var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              myObj = JSON.parse(this.responseText);
+              txt += '<input class="form-control" id="myInput" type="text" placeholder="Search..">'
+              for (x in myObj) {
+                txt += "<li>" + myObj[x].city + "</li>";
+              }
+              document.getElementById("city_dropdown").innerHTML = txt;
+            }
+        };
+        xmlhttp.open("GET", "gethint.php?state=" + state, true);
+        xmlhttp.send();
   }
 });
 
@@ -254,9 +259,5 @@ $(document).ready(function(){
   });
 });
 
-function GetCitiesByState() {
-  var state = $('#clicked-state').val();
-  console.log("Hello");
-}
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
