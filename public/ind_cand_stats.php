@@ -241,7 +241,7 @@ $('#map').usmap({
     $('#state_text')
       .text('State Selected: '+data.name);
     $('#city-selector')
-      .style.display('block');
+      .css('display', 'block');
   }
 });
 
