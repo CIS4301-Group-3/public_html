@@ -44,9 +44,6 @@
     $end_date = '2019-12-31';
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
-
-    $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
-    $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
   
   }
 
@@ -203,10 +200,12 @@ city.onchange = handleCity;
 
 function handleState(e) {
   map.style.display = "block";
+  cityOptions.style.display = "none";
 }
 
 function handleUSA(e) {
   map.style.display = "none";
+  cityOptions.style.display = "none";
 }
 
 function handleCity(e) {
