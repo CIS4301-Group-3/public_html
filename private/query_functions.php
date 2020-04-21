@@ -80,7 +80,7 @@
     $sql .= "FROM DG5.DONATION ";
     $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID ";
     $sql .= "WHERE DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
-    $sql .= "GROUP ELEHMANN.COMMITTEE.CANDIDATE ";
+    $sql .= "GROUP BY ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY ELEHMANN.COMMITTEE.CANDIDATE ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
