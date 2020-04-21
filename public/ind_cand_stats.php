@@ -209,11 +209,12 @@ $('#map').usmap({
   },
   // The click action
   click: function(event, data) {
+    var statename = data.name;
     $('#clicked-state')
       .text('You clicked: '+data.name);
     $('#map').usmap({
       stateSpecificStyles: {
-        data.name: {fill: 'yellow'},
+        statename: {fill: 'yellow'},
         'VA': {fill: 'teal'}
       } 
     });
