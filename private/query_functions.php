@@ -90,6 +90,7 @@
     confirm_result_set($query);
     return $query;
   }
+  
   function candidate_photo($candidate) {
     global $db;
     

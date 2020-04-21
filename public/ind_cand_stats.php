@@ -183,22 +183,19 @@
 
     <div class="text-center" style="margin-top: 20px">
       <?php if($locationOption == 'USA') {
-        echo "<h3>List of Stats in USA</h3>";
+        echo "<h3>List of Stats from the US</h3>";
       } else if ($locationOption == 'State') {
-        echo "<h3>List of Stats in " . $selected_state . "</h3>";
+        echo "<h3>List of Stats from " . $selected_state . "</h3>";
       } else if ($locationOption == 'City') {
-        echo "<h3>List of State in " . $selected_city . ", " . $selected_state . "</h3";
+        echo "<h3>List of Stats from " . $selected_city . ", " . $selected_state . "</h3";
       }
       ?>
 
-      <table>
-        <tr>
-          <td></td>
-          <td>Total Amount of Money Raised</td>
-          <td>Test</td>
-          <td></td>
-        </tr>
-      </table>
+      <div class="row"> 
+        <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
+        <div class ="col-6">Test</div>
+      </div>
+
     </div>
   </div>
 </div>
