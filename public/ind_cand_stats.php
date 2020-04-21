@@ -152,7 +152,7 @@
         </div>
       </div>
       <div id="usmap" class="centerItem">
-        <div id="map" class="mapSize" onclick="GetCitiesByState()"></div>
+        <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
       <div id="state_selected" class="centerItem">
