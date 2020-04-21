@@ -42,6 +42,7 @@
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
       $query2 = total_donations_received($format_start_date, $format_end_date);
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        echo "TEST";
         if ($row['CANDIDATE'] == $candidate) {
           $donations = $row['Total_Donations'];
         }
