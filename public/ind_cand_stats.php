@@ -171,7 +171,9 @@
       </div>
       <div id="city_selector" style="display: none" class="text-center">
         <select class="selectpicker" id="city_dropdown"
-                multiple title="Choose a City"></select>
+                multiple title="Choose a City">
+          <option>Test</option>        
+        </select>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
