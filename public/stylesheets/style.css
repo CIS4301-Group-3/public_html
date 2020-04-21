@@ -8,3 +8,7 @@
   display: none;
   width: 700px; height: 500px;
 }
+
+.navbar {
+  background-color: black;
+}
