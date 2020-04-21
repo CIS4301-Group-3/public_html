@@ -10,7 +10,7 @@
 <?php $page_title = 'Main Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="container" style="margin-left: 10%">
+<div id="container" style="margin-left: 15%; margin-right: 15%">
   <div id="main-menu">
     <p>Our intent is to design and deploy a web application that allows users to gain insight into the
         finances of the 2020 Presidential Primary. In an election season with so many candidates,
@@ -22,8 +22,8 @@
         well as coverage of candidates and their competitors in the news media. Lastly, we believe we
         will be able to gain insight into the donors by comparing their employers and occupations.
     </p>
-    <h2><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
-    <h2>Individual Candidate Page</h2>
+    <h2 class="text-center"><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
+    <h2 class="text-center">Individual Candidate Page</h2>
     <ul>
     <?php while($cand = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
         <li>
