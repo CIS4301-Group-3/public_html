@@ -76,7 +76,7 @@
     global $db;
     
     $sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
-    $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
+    $sql .= "SUM(DG5.DONATION.AMOUNT) AS TOTAL_DONATIONS ";
     $sql .= "FROM DG5.DONATION ";
     $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID ";
     $sql .= "WHERE DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
