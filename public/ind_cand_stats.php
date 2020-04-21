@@ -240,7 +240,7 @@ $('#map').usmap({
               myObj = JSON.parse(this.responseText);
               txt += '<input class="form-control" id="myInput" type="text" placeholder="Search..">'
               for (x in myObj) {
-                txt += "<li>" + myObj[x].city + "</li>";
+                txt += "<li>" + myObj[x]['CITY'] + "</li>";
               }
               document.getElementById("city_dropdown").innerHTML = txt;
             }
