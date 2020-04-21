@@ -46,17 +46,23 @@
         //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
           $money = number_format($row['TOTAL_DONATIONS']);
+          $num_donations = number_format($row['NUM_DONATIONS']);
         }
       }
-      $query3 = num_donations($format_start_date, $format_end_date);
+      /*$query3 = num_donations($format_start_date, $format_end_date);
       while($row = oci_fetch_array($query3, OCI_ASSOC+OCI_RETURN_NULLS)) {
         //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
-          $num_donations = number_format($row['TOTAL_DONATIONS']);
+          $num_donations = number_format($row['NUM_DONATIONS']);
         }
-      }
-      //$query4 = donation_size($format_start_date, $format_end_date);
-      $donation_size;
+      }*/
+      /*$query4 = donation_size($format_start_date, $format_end_date);
+      while($row = oci_fetch_array($query3, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
+        if ($row['CANDIDATE'] == $candidate) {
+          $donation_size = number_format($row['DONATION_SIZE']);
+        }
+      }*/
       //$query5 = num_donors($format_start_date, $format_end_date);
       $num_donors;
       //$query6 = num_donations_per_donor($format_start_date, $format_end_date);
@@ -77,7 +83,7 @@
     }
     oci_free_statement($query);
     oci_free_statement($query2);
-    oci_free_statement($query3);
+    //oci_free_statement($query3);
     //oci_free_statement($query4);
     //oci_free_statement($query5);
     //oci_free_statement($query6);  
