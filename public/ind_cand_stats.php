@@ -41,35 +41,22 @@
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
-      $query2 = total_donations_received($format_start_date, $format_end_date);
+      $query2 = donation_data($format_start_date, $format_end_date);
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
         //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
         if ($row['CANDIDATE'] == $candidate) {
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
+          $donation_size = number_format($row['DONATION_SIZE'], 2);
         }
       }
-      /*$query3 = num_donations($format_start_date, $format_end_date);
-      while($row = oci_fetch_array($query3, OCI_ASSOC+OCI_RETURN_NULLS)) {
-        //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
-        if ($row['CANDIDATE'] == $candidate) {
-          $num_donations = number_format($row['NUM_DONATIONS']);
-        }
-      }*/
-      /*$query4 = donation_size($format_start_date, $format_end_date);
-      while($row = oci_fetch_array($query3, OCI_ASSOC+OCI_RETURN_NULLS)) {
-        //echo $row['CANDIDATE'] . " " . $row['TOTAL_DONATIONS'];
-        if ($row['CANDIDATE'] == $candidate) {
-          $donation_size = number_format($row['DONATION_SIZE']);
-        }
-      }*/
-      //$query5 = num_donors($format_start_date, $format_end_date);
+      //$query3 = num_donors($format_start_date, $format_end_date);
       $num_donors;
-      //$query6 = num_donations_per_donor($format_start_date, $format_end_date);
+      //$query4 = num_donations_per_donor($format_start_date, $format_end_date);
       $num_donations_per_donor;
-      //$query7 = repeat_donors($format_start_date, $format_end_date);
+      //$query5 = repeat_donors($format_start_date, $format_end_date);
       $repeat_donors;
-      //$query8 = donation_per_capita($format_start_date, $format_end_date);
+      //$query6 = donation_per_capita($format_start_date, $format_end_date);
       $donation_per_capita;
 
     } else if ($locationOption == 'State') {
@@ -87,8 +74,6 @@
     //oci_free_statement($query4);
     //oci_free_statement($query5);
     //oci_free_statement($query6);  
-    //oci_free_statement($query7);
-    //oci_free_statement($query8);
 
   } else {
   
