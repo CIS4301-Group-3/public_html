@@ -160,7 +160,7 @@
       </div>
       <div id="city_selector" style="display: none" class="text-center">
         <select class="selectpicker" id="city_dropdown"
-                multiple title="Choose a City" data-live-search="true"></select>
+                multiple title="Choose a City"></select>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
