@@ -237,7 +237,7 @@ $('#map').usmap({
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-              myObj = this.responseText;
+              myObj = JSON.parse(this.responseText);
               txt += '<input class="form-control" id="myInput" type="text" placeholder="Search..">'
               for (x in myObj) {
                 txt += "<li>" + myObj[x].city + "</li>";
