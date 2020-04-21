@@ -41,6 +41,12 @@
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
       $query2 = total_donations_received($format_start_date, $format_end_date);
+      while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        if ($row['CANDIDATE'] == $candidate) {
+          $donations = $donation['Total_Donations'];
+        }
+      }
+      
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -50,7 +56,8 @@
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
       //$query2 = total_donations_received($start_date, $end_date, $state, $city);
     }
-
+    oci_free_statement($query);
+    oci_free_statement($query2); 
       
   } else {
   
@@ -195,21 +202,12 @@
 
       <div class="row">
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
-        <?php
-          while($donation = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
-            if ($donation['CANDIDATE'] == $candidate) {
-              echo '<div class ="col-6" style="text-align: left">$' . $donation['Total_Donations'] . '</div>';
-            }
-          }
-          oci_free_statement($query2); ?>
+        <div class ="col-6" style="text-align: left">$<?php echo $donations?></div>
       </div>
 
     </div>
   </div>
 </div>
-<?php
-  oci_free_statement($query);
-?>
 <script>
 var map = document.getElementById('map');
 var stateSelected = document.getElementById('clicked-state');
