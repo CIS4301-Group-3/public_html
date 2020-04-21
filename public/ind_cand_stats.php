@@ -159,7 +159,21 @@
       <div id="usmap" class="centerItem">
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
-        <div id="city_selector"></div>
+        <div id="city_selector">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <input class="form-control" id="myInput" type="text" placeholder="Search..">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">jQuery</a></li>
+              <li><a href="#">Bootstrap</a></li>
+              <li><a href="#">Angular</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -214,6 +228,15 @@ $('#map').usmap({
     $('#clicked-state')
       .val(data.name);
   }
+});
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".dropdown-menu li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 });
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>

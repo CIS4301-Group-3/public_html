@@ -6,7 +6,6 @@
   function donations_over_time_usa($candidate, $start_date, $end_date) {
     global $db;
     
-    //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
     $sql = "SELECT DG5.DONATION.DAY, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS Total_Donations ";
     $sql .= "FROM DG5.DONATION ";
@@ -29,7 +28,6 @@
   function candidate_photo($candidate) {
     global $db;
     
-    //$sql = "SELECT * FROM aukee.employer ORDER BY FORTUNE_RANK ASC";
     $sql = "SELECT IMAGE ";
     $sql .= "FROM ELEHMANN.CAMPAIGN ";
     $sql .= "WHERE ELEHMANN.CAMPAIGN.CANDIDATE = :candidate_bv";
@@ -66,17 +64,17 @@
     return $query;
   }
 
-  function find_subject_by_id($id) {
+  function get_cities($state) {
     global $db;
 
-    $sql = "SELECT * FROM subjects ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "'";
-    // echo $sql;
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $subject = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    return $subject; // returns an assoc. array 
+    $sql = "SELECT ELEHMANN.CITY.CITY FROM ELEHMANN.CITY ";
+    $sql .= "WHERE ELEHMANN.CITY.STATE = :state_bv";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_bind_by_name($query, ":state_bv", $state);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
   }
 
   function validate_subject($subject) {
@@ -136,52 +134,6 @@
       exit;
     }
 
-  }
-
-  function update_subject($subject) {
-    global $db;
-
-    $errors = validate_subject($subject);
-    if(!empty($errors)) {
-      return $errors;
-    }
-
-    $sql = "UPDATE subjects SET ";
-    $sql .= "menu_name='" . db_escape($db, $subject['menu_name']) . "', ";
-    $sql .= "position='" . db_escape($db, $subject['position']) . "', ";
-    $sql .= "visible='" . db_escape($db, $subject['visible']) . "' ";
-    $sql .= "WHERE id='" . db_escape($db, $subject['id']) . "' ";
-    $sql .= "LIMIT 1";
-
-    $result = mysqli_query($db, $sql);
-    // For UPDATE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // UPDATE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
-
-  function delete_subject($id) {
-    global $db;
-
-    $sql = "DELETE FROM subjects ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-    $sql .= "LIMIT 1";
-    $result = mysqli_query($db, $sql);
-
-    //For DELETE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // DELETE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
   }
   
 ?>
