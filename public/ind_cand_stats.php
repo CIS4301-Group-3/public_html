@@ -58,32 +58,33 @@
       var year;
       var month;
       var day;
-      for (var i=0;i<donationsArray.length;i++)
-      {
-        date = donationsArray[i]['DAY'];
-        year = parseInt(date.substring(0, 4));
-        month = parseInt(date.substring(4, 6)) - 1;
-        day = parseInt(date.substring(6, 8));
-        newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
-      }
-      window.onload = function () {
-      
-      var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        exportEnabled: true,
-        title: {
-          text: "<?php echo $candidate?> Donations Over Time"
-        },
-        axisY: {
-          title: "Amount (USD)"
-        },
-        data: [{
-          type: "line",
-          dataPoints: newDonationsArray
-        }]
-      });
-      chart.render();
-      
+      if (!donationsArray) {
+        for (var i=0;i<donationsArray.length;i++)
+        {
+          date = donationsArray[i]['DAY'];
+          year = parseInt(date.substring(0, 4));
+          month = parseInt(date.substring(4, 6)) - 1;
+          day = parseInt(date.substring(6, 8));
+          newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
+        }
+        window.onload = function () {
+        
+        var chart = new CanvasJS.Chart("chartContainer", {
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: "<?php echo $candidate?> Donations Over Time"
+          },
+          axisY: {
+            title: "Amount (USD)"
+          },
+          data: [{
+            type: "line",
+            dataPoints: newDonationsArray
+          }]
+        });
+        chart.render();
+        }
       }
 </script>
 
