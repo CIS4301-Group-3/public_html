@@ -211,7 +211,7 @@ function handleUSA(e) {
   cityOptions.style.display = "none";
   stateText.style.display = "none";
   stateSelected.val = "";
-  stateText.text = "";
+  stateText.text = "Select A State";
 }
 
 function handleCity(e) {
