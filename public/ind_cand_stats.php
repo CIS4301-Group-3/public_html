@@ -121,7 +121,7 @@
   <div class="col-2">
 	<?php
 	  $imageData = candidate_photo($candidate);
-    print('<img src="data:image/png;base64,'.base64_encode($imageData).'" />');
+    print('<img src="data:image/png;base64,'.base64_encode($imageData).'" class="img-fluid" />');
 	?>
   </div>
   <div class="col-8" id="content">
