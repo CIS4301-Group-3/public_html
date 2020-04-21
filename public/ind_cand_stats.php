@@ -154,7 +154,7 @@
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
-      <div id="state_selected" class="centerItem">
+      <div id="state_selected" class="centerItem" style="display: none">
           <h6 id="state_text">Select a State</h6>
       </div>
       <div id="city_selector" style="display: none" class="text-center">
@@ -188,6 +188,7 @@
 ?>
 <script>
 var map = document.getElementById('map');
+var stateSelected = document.getElementById('state_selected');
 var cityOptions = document.getElementById('city_selector');
 var state = document.getElementById('stateOption');
 var usa = document.getElementById('USAOption');
@@ -200,16 +201,19 @@ city.onchange = handleCity;
 function handleState(e) {
   map.style.display = "block";
   cityOptions.style.display = "none";
+  stateSelected.style.display = "block";
 }
 
 function handleUSA(e) {
   map.style.display = "none";
   cityOptions.style.display = "none";
+  stateSelected.style.display = "none";
 }
 
 function handleCity(e) {
   map.style.display = "block";
   cityOptions.style.display = "block";
+  stateSelected.style.display = "block";
 
 }
 
