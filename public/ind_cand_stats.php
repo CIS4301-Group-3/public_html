@@ -168,7 +168,7 @@
               <li>
                 <a class="action"
                   href="">
-                  <?php echo $cand['CANDIDATE']; ?></a>
+                  <?php echo $city['CITY']; ?></a>
               </li>
             <?php }
                   oci_free_statement($list_candidates); ?>
@@ -216,7 +216,7 @@ function handleUSA(e) {
 
 function handleCity(e) {
   map.style.display = "block";
-  cityOptions.style.display = "block";
+  //cityOptions.style.display = "block";
   stateText.style.display = "block";
 
 }
@@ -240,6 +240,8 @@ $('#map').usmap({
       .val(data.name);
     $('#state_text')
       .text('State Selected: '+data.name);
+    $('#city-selector')
+      .style.display('block');
   }
 });
 
