@@ -30,7 +30,8 @@
     <header>
       <h1>Election Finance Insights</h1>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light"
+         style="background-color: #b8e2ff; margin-top: 5px; margin-bottom: 15px;">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/index.php'); ?>">Home</a></li>
         <li class="nav-item active"><a class="nav-link" href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></li>
