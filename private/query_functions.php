@@ -82,7 +82,7 @@
     $sql .= "WHERE DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
     $sql .= "GROUP ELEHMANN.COMMITTEE.CANDIDATE ";
     $sql .= "ORDER BY ELEHMANN.COMMITTEE.CANDIDATE ASC";
-    //echo $sql;
+    echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":start_date_bv", $start_date);
     oci_bind_by_name($query, ":end_date_bv", $end_date);
@@ -90,7 +90,7 @@
     confirm_result_set($query);
     return $query;
   }
-  
+
   function candidate_photo($candidate) {
     global $db;
     
