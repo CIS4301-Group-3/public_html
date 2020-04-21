@@ -256,7 +256,7 @@ $(document).ready(function(){
 
 function GetCitiesByState() {
   var state = $('#clicked-state').val();
-  console.log(state + "Hello");
+  console.log("Hello");
 }
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
