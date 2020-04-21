@@ -5,7 +5,6 @@
 <?php
 
   $state = $_GET['state'];
-  echo $state;
   $query = get_cities($state);
   $nrows = oci_fetch_all($query, $city_list, null, null, OCI_FETCHSTATEMENT_BY_ROW+OCI_ASSOC);
   
