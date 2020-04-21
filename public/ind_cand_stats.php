@@ -29,9 +29,10 @@
   
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
+    $locationOption = $_POST['locationOption'];
+    echo $locationOption;
     $selected_state = $_POST['selected_state'];
     //$selected_city = $_POST['selected_city'];
-    echo $selected_state;
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
 
@@ -46,7 +47,7 @@
     $format_end_date = format_date($end_date);
     $selected_state = '';
     $USAchecked = '';
-    $stateChecked = 'checked';
+    $stateChecked = '';
     $cityChecked = '';
 
   
@@ -146,13 +147,13 @@
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="USAOption" autocomplete="off" <?php echo h($USAchecked); ?>>USA
+            <input type="radio" name="locationOption" value="USA" id="USAOption" autocomplete="off" >USA
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="stateOption" autocomplete="off" <?php echo h($stateChecked); ?>>State
+            <input type="radio" name="locationOption" value="State" id="stateOption" autocomplete="off" >State
           </label>
           <label class="btn btn-secondary">
-            <input type="radio" name="options" id="cityOption" autocomplete="off" <?php echo h($cityChecked); ?>>City
+            <input type="radio" name="locationOption" value="City" id="cityOption" autocomplete="off" >City
           </label>
         </div>
       </div>
