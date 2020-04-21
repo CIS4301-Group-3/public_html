@@ -69,7 +69,7 @@
 
     $sql = "SELECT ELEHMANN.CITY.CITY FROM ELEHMANN.CITY ";
     $sql .= "WHERE ELEHMANN.CITY.STATE = :state_bv";
-    //echo $sql;
+    echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":state_bv", $state);
     oci_execute($query);

@@ -12,6 +12,6 @@
 
 <script>
   var citiesJSON = <?php echo json_encode($city_list); ?>;
+  console.log("List of Cities");
   console.log(citiesJSON);
-  document.write(citiesJSON);
 </script>
