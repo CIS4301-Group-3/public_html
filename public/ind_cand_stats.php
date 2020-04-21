@@ -29,6 +29,8 @@
   
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
+    $selected_state = $_POST['selected_state'];
+    echo $selected_state;
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
 
@@ -156,7 +158,7 @@
       </div>
       <div id="usmap" class="centerItem">
         <div id="map" class="mapSize"></div>
-        <div id="clicked-state"></div>
+        <input type="text" name="selected_state" style="display: none" value="" id="clicked-state"></div>
         <div id="city_selector"></div>
       </div>
       <div class="text-center">
@@ -210,14 +212,7 @@ $('#map').usmap({
   // The click action
   click: function(event, data) {
     $('#clicked-state')
-      .text('You clicked: '+data.name);},
-  click: function(event, data) {
-    var stateName = data;
-    $('#map').usmap({
-      stateSpecificStyles: {
-        stateName: {fill: 'yellow'},
-        'VA': {fill: 'teal'}
-      } 
+      .value(data.name);
     });
   }
 });
