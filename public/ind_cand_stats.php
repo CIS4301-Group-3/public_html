@@ -58,7 +58,7 @@
       var year;
       var month;
       var day;
-      if (!donationsArray) {
+      if (donationsArray != null) {
         for (var i=0;i<donationsArray.length;i++)
         {
           date = donationsArray[i]['DAY'];
@@ -210,7 +210,7 @@ function handleUSA(e) {
   map.style.display = "none";
   cityOptions.style.display = "none";
   stateText.style.display = "none";
-  stateSelected.value = "";
+  stateSelected.val = "";
   stateText.text = "";
 }
 
