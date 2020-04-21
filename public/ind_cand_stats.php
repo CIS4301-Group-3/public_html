@@ -246,7 +246,7 @@ $('#map').usmap({
             }
         };
         xmlhttp.open("GET", "php/cities.php?state=" + state, true);
-        xmlhttp.send();
+        //xmlhttp.send();
   }
 });
 
