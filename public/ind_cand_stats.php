@@ -225,21 +225,6 @@
       </div>
 
       <div class="row">
-        <div class ="col-6" style="text-align: right">Total Number of Donors</div>
-        <div class ="col-6" style="text-align: left"><?php echo $num_donors?></div>
-      </div>
-
-      <div class="row">
-        <div class ="col-6" style="text-align: right">Average Number of Donations Per Donor</div>
-        <div class ="col-6" style="text-align: left"><?php echo $num_donations_per_donor?></div>
-      </div>
-
-      <div class="row">
-        <div class ="col-6" style="text-align: right">Number of Repeat Donors</div>
-        <div class ="col-6" style="text-align: left"><?php echo $repeat_donors?></div>
-      </div>
-
-      <div class="row">
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
