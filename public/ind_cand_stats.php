@@ -210,8 +210,8 @@ function handleUSA(e) {
   map.style.display = "none";
   cityOptions.style.display = "none";
   stateText.style.display = "none";
-  stateSelected.text = "";
-  stateText.text = "Select A State";
+  stateSelected.value = "";
+  stateText.textContent = "Select A State";
 }
 
 function handleCity(e) {
