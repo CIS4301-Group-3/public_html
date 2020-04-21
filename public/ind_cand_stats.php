@@ -154,7 +154,7 @@
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="locationOption" value="USA" id="USAOption" autocomplete="off" >USA
+            <input type="radio" name="locationOption" value="USA" id="USAOption" autocomplete="off" checked>USA
           </label>
           <label class="btn btn-secondary">
             <input type="radio" name="locationOption" value="State" id="stateOption" autocomplete="off" >State
@@ -198,7 +198,7 @@
         <div class ="col-6" style="text-align: left">$
           <?php while($cand = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
             if ($cand['CANDIDATE'] == $candidate) {
-              echo $cand['TOTAL_DONATIONS'];
+              echo $cand['Total_Donations'];
             }
           }?>
           
