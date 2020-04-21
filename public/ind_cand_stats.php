@@ -102,10 +102,7 @@
   <div class="col-2">
     <h4 class="text-center">Select a</h4>
     <h2 class="text-center">Candidate</h2>
-    <!--<img src="images/show_images.php?id=Bernie%20Sanders" alt="Bernie Sanders" class="img-thumbnail">-->
-    <?php // Trying to make code to dynamically add the candidates as they are added to the
-          // database ****I can't get the images to load!!*****
-    ?>
+    
     <?php $candidate_array = list_candidates();
       $count = 0;
       while($cand = oci_fetch_array($candidate_array, OCI_ASSOC+OCI_RETURN_NULLS)) { ?>
@@ -123,8 +120,8 @@
   </div>
   <div class="col-2">
 	<?php
-	  //$imageData = candidate_photo($cand['CANDIDATE']);
-          //print('<img src="data:image/png;base64,'.base64_encode($imageData).'" />');
+	  $imageData = candidate_photo($candidate);
+    print('<img src="data:image/png;base64,'.base64_encode($imageData).'" />');
 	?>
   </div>
   <div class="col-8" id="content">
