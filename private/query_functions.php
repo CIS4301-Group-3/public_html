@@ -72,7 +72,7 @@
     return $query;
   }
 
-  function total_donations_received($start_date, $end_date) {
+  function donation_data($start_date, $end_date) {
     global $db;
     
     $sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
