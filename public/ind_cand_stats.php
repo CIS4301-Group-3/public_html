@@ -212,7 +212,7 @@ $('#map').usmap({
   // The click action
   click: function(event, data) {
     $('#clicked-state')
-      .value(data.name);
+      .val(data.name);
   }
 });
 </script>
