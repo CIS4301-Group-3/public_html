@@ -40,7 +40,7 @@
     if ($locationOption == 'USA') {
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-      $query2 = total_donations_received($start_date, $end_date);
+      $query2 = total_donations_received($format_start_date, $format_end_date);
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -196,9 +196,9 @@
       <div class="row"> 
         <div class ="col-6" style="text-align: right">Total Amount of Money Raised</div>
         <?php
-          while($donations = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
-            if ($donations['CANDIDATE'] == $candidate) {
-              echo '<div class ="col-6" style="text-align: left">$' . $donations['Total_Donations'];
+          while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+            if ($row['CANDIDATE'] == $candidate) {
+              echo '<div class ="col-6" style="text-align: left">$' . $row['Total_Donations'];
             }
           }
           oci_free_statement($query2); ?></div>

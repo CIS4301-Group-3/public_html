@@ -88,7 +88,6 @@
     oci_bind_by_name($query, ":end_date_bv", $end_date);
     oci_execute($query);
     confirm_result_set($query);
-    echo $query;
     return $query;
   }
 
