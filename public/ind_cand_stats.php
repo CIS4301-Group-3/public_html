@@ -158,7 +158,7 @@
         <div id="map" class="mapSize"></div>
         <input type="text" name="selected_state" style="display: none" value="" id="clicked-state">
       </div>
-      <div id="city_selector" style="display: none" class="centerItem">
+      <div id="city_selector" style="display: none" class="text-center">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose a City
           <span class="caret"></span></button>
