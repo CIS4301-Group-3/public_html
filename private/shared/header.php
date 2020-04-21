@@ -28,7 +28,7 @@
   <body>
     <div class="container-fluid">
     <header>
-      <h1>Election Finance Insights</h1>
+      <h1 class="text-center">Election Finance Insights</h1>
     </header>
     <nav class="navbar navbar-expand-lg navbar-light"
          style="background-color: #b8e2ff; margin-top: 5px; margin-bottom: 15px;">
