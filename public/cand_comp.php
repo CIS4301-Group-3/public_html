@@ -52,7 +52,7 @@ var candidates = [];
             $money[$i] = number_format($row['TOTAL_DONATIONS']);
             $num_donations[$i] = number_format($row['NUM_DONATIONS']);
             $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
-            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 4);
           }
         }
         $i++;
@@ -75,7 +75,7 @@ var candidates = [];
             $money[$i] = number_format($row['TOTAL_DONATIONS']);
             $num_donations[$i] = number_format($row['NUM_DONATIONS']);
             $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
-            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 4);
           }
         }
         $i++;
@@ -97,7 +97,7 @@ var candidates = [];
             $money[$i] = number_format($row['TOTAL_DONATIONS']);
             $num_donations[$i] = number_format($row['NUM_DONATIONS']);
             $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
-            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 4);
           }
         }
         $i++;

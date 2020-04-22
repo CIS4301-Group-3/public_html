@@ -48,7 +48,7 @@
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
           $donation_size = number_format($row['DONATION_SIZE'], 2);
-          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 4);
         }
       }
     } else if ($locationOption == 'State') {
@@ -61,7 +61,7 @@
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
           $donation_size = number_format($row['DONATION_SIZE'], 2);
-          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 4);
         }
       }
     } else if ($locationOption == 'City') {
@@ -74,7 +74,7 @@
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
           $donation_size = number_format($row['DONATION_SIZE'], 2);
-          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 4);
         }
       }
     }
