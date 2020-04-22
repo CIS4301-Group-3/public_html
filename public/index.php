@@ -4,7 +4,10 @@
 
   $list_candidates = list_candidates();
   $count = 0;
-
+  $tuple_query = num_tuples();
+  while($row = oci_fetch_array($tuple_query, OCI_ASSOC+OCI_RETURN_NULLS)) {
+    $num_tuples = $row['TOTAL_TUPLES'];
+  }
 ?>
 
 <?php $page_title = 'Main Menu'; ?>
@@ -40,7 +43,24 @@
             }
             oci_free_statement($list_candidates); ?>
     </div>
+    <div class="row">
+      <div class="text-center" style="padding: 10px" id="tuple-button">
+        <button class="btn btn-primary" onclick="showTuple();">Number of Tuples</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
+        <p class="btn btn-primary"><?php echo $num_tuples ?></p>
+      </div>
+    </div>
   </div>
 </div>
+<script>
+  function showTuple() {
+    //var tupleButton = document.getElementById('tuple-button');
+    var tupleText = document.getElementById('tuple-text');
 
+    tuplleText.style.display = "block";
+  }
+</script>
 <?php include(SHARED_PATH . '/footer.php'); ?>

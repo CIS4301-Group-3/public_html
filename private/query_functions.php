@@ -245,5 +245,22 @@
     confirm_result_set($query);
     return $query;
   }
+
+  function num_tuples() {
+    global $db;
+
+    $sql = "SELECT (donation + event + state + city + campaign + committee) AS TOTAL_TUPLES ";
+    $sql .= "FROM (SELECT Count(*) as donation FROM dg5.donation), ";
+    $sql .= "(SELECT COUNT(*) as event FROM elehmann.event), ";
+    $sql .= "(SELECT COUNT(*) as state from elehmann.state), ";
+    $sql .= "(SELECT COUNT(*) as campaign from elehmann.campaign), ";
+    $sql .= "(SELECT COUNT(*) as committee from elehmann.committee), ";
+    $sql .= "(SELECT COUNT(*) as city FROM elehmann.city)";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
+  }
   
 ?>
