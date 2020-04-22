@@ -34,6 +34,10 @@ var candidates = [];
     if ($locationOption == 'USA') {
       $i = 0;
       $dataPointArray = array();
+      $money = array();
+      $num_donations = array();
+      $donation_size = array();
+      $donations_per_capita = array();
       $list_candidates = list_candidates();
       while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
         $candidate = $row['CANDIDATE'];
@@ -41,9 +45,19 @@ var candidates = [];
         $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	      $dataPointArray[$i] = $dataPoints;
+       
+	$query2 = donation_data_us($format_start_date, $format_end_date);
+        while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+          if ($row['CANDIDATE'] == $candidate) {
+            $money[$i] = number_format($row['TOTAL_DONATIONS']);
+            $num_donations[$i] = number_format($row['NUM_DONATIONS']);
+            $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          }
+        }
         $i++;
       }
-    //	var_dump($dataPointArray);
+//    var_dump($donation_per_capita);
     } else if ($locationOption == 'State') {
       $i = 0;
       $dataPointArray = array();
@@ -54,6 +68,15 @@ var candidates = [];
         $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	      $dataPointArray[$i] = $dataPoints;
+	$query2 = donation_data_state($format_start_date, $format_end_date, $selected_state);
+        while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+          if ($row['CANDIDATE'] == $candidate) {
+            $money[$i] = number_format($row['TOTAL_DONATIONS']);
+            $num_donations[$i] = number_format($row['NUM_DONATIONS']);
+            $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          }
+        }
         $i++;
       }
     } else if ($locationOption == 'City') {
@@ -66,6 +89,15 @@ var candidates = [];
         $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	      $dataPointArray[$i] = $dataPoints;
+	$query2 = donation_data_city($format_start_date, $format_end_date, $selected_city);
+        while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+          if ($row['CANDIDATE'] == $candidate) {
+            $money[$i] = number_format($row['TOTAL_DONATIONS']);
+            $num_donations[$i] = number_format($row['NUM_DONATIONS']);
+            $donation_size[$i] = number_format($row['DONATION_SIZE'], 2);
+            $donation_per_capita[$i] = number_format($row['DONATIONS_PER_CAPITA'], 3);
+          }
+        }
         $i++;
       }
     }
@@ -87,6 +119,16 @@ var candidates = [];
       var donationsArray;
       var newDonationsArray = [];
       var bulkDataArray = [];
+      var moneyArray = [];
+      var moneyDataPoints = [];
+      var numOfDonationsArray = [];
+      var numOfDonationsDataPoints = [];
+      var donationSizeArray = [];
+      var donationSizeDataPoints = [];
+      var donationsPerCapArray = [];
+      var donationsPerCapDataPoints = [];
+//$donation_size = array();
+//$donations_per_capita = array();
       var date;
       var year;
       var month;
@@ -105,8 +147,32 @@ var candidates = [];
 	<?php
 	  }
 	?>
+        <?php foreach($money as $money => $val){
+        ?>
+                moneyArray[<?php echo $money;?>] = <?php echo str_replace(',','',$val); ?>;
+        <?php
+          }
+        ?>
+        <?php foreach($num_donations as $num => $val){
+        ?>
+                numOfDonationsArray[<?php echo $num;?>] = <?php echo str_replace(',','',$val); ?>;
+        <?php
+          }
+        ?>
+        <?php foreach($donation_size as $num => $val){
+        ?>
+                donationSizeArray[<?php echo $num;?>] = <?php echo str_replace(',','',$val); ?>;
+        <?php
+          }
+        ?>
+        <?php foreach($donations_per_capita as $num => $val){
+        ?>
+                donationsPerCapArray[<?php echo $num;?>] = <?php echo str_replace(',','',$val); ?>;
+        <?php
+          }
+        ?>
       for (var i=0;i<dataMagic.length;i++){
-	      console.log(dataMagic[i]);
+//	      console.log(dataMagic[i]);
         donationsArray = dataMagic[i];
         newDonationsArray = [];
         if (donationsArray != null) {
@@ -122,7 +188,12 @@ var candidates = [];
         }
         bulkDataArray.push({type: "line", showInLegend: true,
                             name: candidate[i], dataPoints: newDonationsArray});
+	moneyDataPoints.push({label: candidate[i], y: moneyArray[i]});
+	numOfDonationsDataPoints.push({label: candidate[i], y: numOfDonationsArray[i]});
+	donationSizeDataPoints.push({label: candidate[i], y: donationSizeArray[i]});
+	donationsPerCapDataPoints.push({label: candidate[i], y: donationsPerCapArray[i]});
       }
+//	console.log(moneyDataPoints);
         window.onload = function () {
         
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -139,13 +210,111 @@ var candidates = [];
                   ?>"
           },
           axisY: {
-            title: "Amount (USD)"
+            title: "Amount (USD)",
+	    prefix: "$"
           },
           data: bulkDataArray
         });
         chart.render();
 
+        var chart = new CanvasJS.Chart("chart2Container", {
+          animationEnabled: true,
+          title: {
+            text: "<?php
+                    if($locationOption == 'USA') {
+                      echo "Total US Dollars Raised";
+		    } else if ($locationOption == 'State') {
+                      echo "Total Dollars Raised From " . $selected_state;
+                    } else if ($locationOption == 'City') {
+                      echo "Total Dollars Raised From " . $selected_city . ", " . $selected_state;
+                    }
+                  ?>"
+          },
+          axisY: {
+            title: "Amount (USD)",
+	    prefix: "$"
+          },
+          data: [{        
+		type: "column",  
+		dataPoints: moneyDataPoints
+	  }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("chart3Container", {
+          animationEnabled: true,
+          title: {
+            text: "<?php
+                    if($locationOption == 'USA') {
+                      echo "Total Number of US Donations";
+		    } else if ($locationOption == 'State') {
+                      echo "Total Number of Donations From " . $selected_state;
+                    } else if ($locationOption == 'City') {
+                      echo "Total Number of Donations From " . $selected_city . ", " . $selected_state;
+                    }
+                  ?>"
+          },
+          axisY: {
+            title: "Number of Donations"
+          },
+          data: [{        
+		type: "column",  
+		dataPoints: numOfDonationsDataPoints
+	  }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("chart4Container", {
+          animationEnabled: true,
+          title: {
+            text: "<?php
+                    if($locationOption == 'USA') {
+                      echo "US Average Donation Amount";
+		    } else if ($locationOption == 'State') {
+                      echo "Average Donation Amount From " . $selected_state;
+                    } else if ($locationOption == 'City') {
+                      echo "Average Donation Amount From " . $selected_city . ", " . $selected_state;
+                    }
+                  ?>"
+          },
+          axisY: {
+            title: "Amount (USD)",
+	    prefix: "$"
+          },
+          data: [{        
+		type: "column",  
+		dataPoints: donationSizeDataPoints
+	  }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("chart5Container", {
+          animationEnabled: true,
+          title: {
+            text: "<?php
+                    if($locationOption == 'USA') {
+                      echo "Total Number of US Donations Per Capita";
+		    } else if ($locationOption == 'State') {
+                      echo "Total Number of Donations From " . $selected_state;
+                    } else if ($locationOption == 'City') {
+                      echo "Total Number of Donations From " . $selected_city . ", " . $selected_state;
+                    }
+                  ?>"
+          },
+          axisY: {
+            title: "Number of Donations"
+          },
+          data: [{        
+		type: "column",  
+		dataPoints: donationsPerCapDataPoints
+	  }]
+        });
+        chart.render();
+
         }
+
+
+
       
 </script>
 
@@ -219,6 +388,15 @@ var candidates = [];
     </form>
 
     <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
+	<br>
+    <div id="chart2Container" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
+	<br>
+    <div id="chart3Container" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
+	<br>
+    <div id="chart4Container" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
+	<br>
+    <div id="chart5Container" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
+	<br>
 
   </div>
 </div>
