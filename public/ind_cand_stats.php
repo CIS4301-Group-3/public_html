@@ -398,9 +398,9 @@
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
-      <?php } ?>
     </div>
-
+    <?php } ?>
+    
     <div id="chart2Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
 
     <div id="chart3Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
