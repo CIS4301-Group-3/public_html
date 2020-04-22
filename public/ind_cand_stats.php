@@ -137,7 +137,7 @@
           axisY: {
             title: "Donations (in USD)",
             prefix: "$",
-            titleFontSize: 20;
+            titleFontSize: 20,
           },
           data: [{
             type: "bar",
