@@ -133,7 +133,7 @@
           animationEnabled: true,
           title:{
             text: "Total Donations By State Over Time Period",
-            fontSize: 40,
+            fontSize: 30,
           },
           axisX: {
             labelFontSize: 15,
@@ -142,8 +142,8 @@
           axisY: {
             title: "Donations (in USD)",
             prefix: "$",
-            labelFontSize: 20,
-            titleFontSize: 20,
+            labelFontSize: 15,
+            titleFontSize: 15,
           },
           data: [{
             type: "bar",
