@@ -14,7 +14,7 @@ var candidates = [];
     $cand_list[$i] = $row['CANDIDATE'];
     $i++;
   }
-  
+
   oci_free_statement($list_candidates);
 
   if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -44,8 +44,17 @@ var candidates = [];
       }
     //	var_dump($dataPointArray);
     } else if ($locationOption == 'State') {
-      $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
-      $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      $i = 0;
+      $dataPointArray = array();
+      $list_candidates = list_candidates();
+      while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        $candidate = $row['CANDIDATE'];
+        //	echo $candidate";
+        $query = donations_over_time_state($candidate, $format_start_date, $format_end_date);
+        $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+	      $dataPointArray[$i] = $dataPoints;
+        $i++;
+      }
     } else if ($locationOption == 'City') {
       $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -163,7 +172,7 @@ var candidates = [];
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="locationOption" value="USA" id="USAOption" autocomplete="off" >USA
+            <input type="radio" name="locationOption" value="USA" id="USAOption" autocomplete="off" checked>USA
           </label>
           <label class="btn btn-secondary">
             <input type="radio" name="locationOption" value="State" id="stateOption" autocomplete="off" >State
