@@ -108,17 +108,20 @@
           year = parseInt(date.substring(0, 4));
           month = parseInt(date.substring(4, 6)) - 1;
           day = parseInt(date.substring(6, 8));
-          newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
+          newDonationsArray.push({x: new Date(year, month, day),
+                                  y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
         }
 
         for (var i=0;i<stateDonationArray.length;i++)
         {
-          newStateDonationArray.push({label: stateDonationArray[i]['DISPLAYNAME'], y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS'])});
+          newStateDonationArray.push({label: stateDonationArray[i]['DISPLAYNAME'],
+                                      y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS'])});
         }
 
         for (var i=0;i<stateDonationArray.length;i++)
         {
-          newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['DISPLAYNAME'], y: parseInt(stateDonationArrayPerCapita[i]['DONATIONS_PER_CAPITA'])});
+          newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['DISPLAYNAME'],
+                                              y: parseFloat(stateDonationArrayPerCapita[i]['DONATIONS_PER_CAPITA'])});
         }
 
         window.onload = function () {
