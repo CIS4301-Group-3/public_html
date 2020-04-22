@@ -63,10 +63,13 @@
     $query3 = donations_by_state($candidate, $format_start_date, $format_end_date);
     $nrows = oci_fetch_all($query3, $dataPoints2, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
+    $query4 = donations_by_state_per_capita($candidate, $format_start_date, $format_end_date);
+    $nrows = oci_fetch_all($query4, $dataPoints3, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+
     oci_free_statement($query);
     oci_free_statement($query2);
     oci_free_statement($query3);
-    //oci_free_statement($query4);
+    oci_free_statement($query4);
     //oci_free_statement($query5);
     //oci_free_statement($query6);  
 
@@ -90,6 +93,8 @@
       var newDonationsArray = [];
       var stateDonationArray = <?php echo json_encode($dataPoints2); ?>;
       var newStateDonationArray = [];
+      var stateDonationArrayPerCapita = <?php echo json_encode($dataPoints3); ?>;
+      var newStateDonationArrayPerCapita = [];
       var date;
       var year;
       var month;
@@ -109,6 +114,11 @@
         for (var i=0;i<stateDonationArray.length;i++)
         {
           newStateDonationArray.push({label: stateDonationArray[i]['STATE'], y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS'])});
+        }
+
+        for (var i=0;i<stateDonationArray.length;i++)
+        {
+          newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['STATE'], y: parseInt(stateDonationArrayPerCapita[i]['TOTAL_DONATIONS'])});
         }
 
         window.onload = function () {
@@ -151,6 +161,30 @@
           }]
         });
         chart2.render();
+
+        var chart3 = new CanvasJS.Chart("chart3Container", {
+          animationEnabled: true,
+          title:{
+            text: "Total Donations By State Per Capita Over Time Period",
+            fontSize: 30,
+          },
+          axisX: {
+            labelFontSize: 15,
+            interval: 1,
+          },
+          axisY: {
+            title: "Donations (in USD)",
+            prefix: "$",
+            labelFontSize: 15,
+            titleFontSize: 15,
+          },
+          data: [{
+            type: "bar",
+            dataPoints: newStateDonationArrayPerCapita
+          }]
+        });
+        chart3.render();
+
         }
 
       }
@@ -267,6 +301,8 @@
     </div>
 
     <div id="chart2Container" style="height: 1000px; width: 100%;"></div>
+
+    <div id="chart3Container" style="height: 1000px; width: 100%;"></div>
 
   </div>
 </div>
