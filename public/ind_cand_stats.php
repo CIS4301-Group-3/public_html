@@ -132,7 +132,7 @@
             dataPoints: newDonationsArray
           }]
         });
-        chart.render();
+        chart2.render();
         }
 
       }
