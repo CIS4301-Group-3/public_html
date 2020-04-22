@@ -322,8 +322,11 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="text-center" style="border-top: 3px solid blue;">
-        <div class="text-center" style="margin-top: 25px">
+      <div class="text-center">
+        <div class="text-center"
+             style="margin-top: 25px;
+                    border-top: 3px solid blue;
+                    padding-top: 10px;">
           <label>Filter Location By:</label>
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
