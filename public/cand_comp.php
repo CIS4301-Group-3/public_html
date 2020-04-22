@@ -7,26 +7,14 @@ var candidates = [];
 
 <?php
 
-//  if(!isset($_GET['id'])) {
-//    redirect_to(url_for('/index.php'));
-//  }
-//  $id = $_GET['id'];
   $list_candidates = list_candidates();
   $i = 0;
-  $cand_exists = false;
   $cand_list = [];
   while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
-    if ($i == $id) {
-      $candidate = $row['CANDIDATE'];
-      $cand_exists = true;
-    }
     $cand_list[$i] = $row['CANDIDATE'];
     $i++;
   }
-//  if (!$cand_exists)
-//  {
-//    redirect_to(url_for('/index.php'));
-//  }
+  
   oci_free_statement($list_candidates);
 
   if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,13 +36,13 @@ var candidates = [];
       $list_candidates = list_candidates();
       while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
         $candidate = $row['CANDIDATE'];
-//	echo $candidate";
+        //	echo $candidate";
         $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-	$dataPointArray[$i] = $dataPoints;
+	      $dataPointArray[$i] = $dataPoints;
         $i++;
       }
-//	var_dump($dataPointArray);
+    //	var_dump($dataPointArray);
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -100,9 +88,9 @@ var candidates = [];
 	  }
 	?>
       for (var i=0;i<dataMagic.length;i++){
-	console.log(dataMagic[i]);
-	donationsArray = dataMagic[i];
-	newDonationsArray = [];
+	      console.log(dataMagic[i]);
+        donationsArray = dataMagic[i];
+        newDonationsArray = [];
         if (donationsArray != null) {
           for (var c=0;c<donationsArray.length;c++)
           {
