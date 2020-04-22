@@ -57,8 +57,17 @@ var candidates = [];
         $i++;
       }
     } else if ($locationOption == 'City') {
-      $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
-      $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+      $i = 0;
+      $dataPointArray = array();
+      $list_candidates = list_candidates();
+      while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        $candidate = $row['CANDIDATE'];
+        //	echo $candidate";
+        $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
+        $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+	      $dataPointArray[$i] = $dataPoints;
+        $i++;
+      }
     }
       
   } else {
