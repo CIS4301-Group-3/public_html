@@ -56,6 +56,7 @@
 
       $query2 = donation_data_state($format_start_date, $format_end_date, $state);
       while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        echo "Test";
         if ($row['CANDIDATE'] == $candidate) {
           $money = number_format($row['TOTAL_DONATIONS']);
           $num_donations = number_format($row['NUM_DONATIONS']);
