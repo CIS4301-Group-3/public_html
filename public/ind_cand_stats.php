@@ -136,7 +136,7 @@
             fontSize: 50,
           },
           axisX: {
-            labelFontSize: 20,
+            labelFontSize: 10,
           },
           axisY: {
             title: "Donations (in USD)",
