@@ -132,7 +132,8 @@
         var chart2 = new CanvasJS.Chart("chart2Container", {
           animationEnabled: true,
           title:{
-            text: "Total Donations By State Over Time Period"
+            text: "Total Donations By State Over Time Period",
+            fontSize: 50,
           },
           axisX: {
             labelFontSize: 20,
@@ -263,7 +264,7 @@
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
 
-      <div id="chart2Container" style="height: 700px; width: 100%;"></div>
+      <div id="chart2Container" style="height: 1000px; width: 100%;"></div>
 
     </div>
   </div>
