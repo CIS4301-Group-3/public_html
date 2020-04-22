@@ -354,7 +354,7 @@
     </form>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
-      <?php if ($dataPoints.length() < 1) {
+      <?php if (count($dataPoints) < 1) {
         if($locationOption == 'USA') {
           echo "<h3>There are no donations from the US during the specified time period</h3>";
         } else if ($locationOption == 'State') {
@@ -368,7 +368,7 @@
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
-      <?php if ($dataPoints.length() > 0) {
+      <?php if (count($dataPoints) > 0) {
         if($locationOption == 'USA') {
           echo "<h3>List of Stats from the US</h3>";
         } else if ($locationOption == 'State') {
