@@ -354,19 +354,18 @@
     </form>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
-    <?php if ($dataPoints.length() < 1) {
-      if($locationOption == 'USA') {
-        echo "<h3>There are no donations from the US during the specified time period</h3>";
-      } else if ($locationOption == 'State') {
-        echo "<h3>There are no donations from " . $selected_state . " during the specified time period</h3>";
-      } else if ($locationOption == 'City') {
-        echo "<h3>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
-      }
-    }?>
+      <?php if ($dataPoints.length() < 1) {
+        if($locationOption == 'USA') {
+          echo "<h3>There are no donations from the US during the specified time period</h3>";
+        } else if ($locationOption == 'State') {
+          echo "<h3>There are no donations from " . $selected_state . " during the specified time period</h3>";
+        } else if ($locationOption == 'City') {
+          echo "<h3>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
+        }
+      }?>
     </div>
-    <?php if ($dataPoints.length() > 0) { ?>
-      <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <?php } ?>
+    
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
       <?php if ($dataPoints.length() > 0) {
