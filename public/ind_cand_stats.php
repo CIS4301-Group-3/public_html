@@ -376,7 +376,7 @@
         } else if ($locationOption == 'City') {
           echo "<h3>List of Stats from " . $selected_city . ", " . $selected_state . "</h3>";
         }
-      }
+      
       ?>
 
       <div class="row">
@@ -398,6 +398,7 @@
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
+      <?php } ?>
     </div>
 
     <div id="chart2Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
