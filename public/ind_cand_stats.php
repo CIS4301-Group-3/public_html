@@ -322,7 +322,7 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="text-center">
+      <div class="text-center" style="border-top: 3px solid blue;">
         <div class="text-center" style="margin-top: 25px">
           <label>Filter Location By:</label>
         </div>
@@ -371,7 +371,11 @@
     <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $donation_display ?>"></div>
 
     <div class="text-center"
-         style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>; border-bottom: 2px solid blue;">
+         style="margin-top: 20px;
+                margin-bottom: 40px;
+                display: <?php echo $display ?>;
+                border-bottom: 3px solid blue;
+                padding-bottom: 10px;">
       <?php if (count($dataPoints) > 0) {
         if($locationOption == 'USA') {
           echo "<h3>List of Stats from the US</h3>";
