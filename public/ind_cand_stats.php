@@ -54,11 +54,11 @@
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-      //$query2 = total_donations_received($start_date, $end_date, $state);
+      //$query2 = donation_data_state($start_date, $end_date, $state);
     } else if ($locationOption == 'City') {
       $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-      //$query2 = total_donations_received($start_date, $end_date, $state, $city);
+      //$query2 = donation_data_city($start_date, $end_date, $state, $city);
     }
     $query3 = donations_by_state($candidate, $format_start_date, $format_end_date);
     $nrows = oci_fetch_all($query3, $dataPoints2, null, null, OCI_FETCHSTATEMENT_BY_ROW);
@@ -66,11 +66,14 @@
     $query4 = donations_by_state_per_capita($candidate, $format_start_date, $format_end_date);
     $nrows = oci_fetch_all($query4, $dataPoints3, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
+    $query5 = avg_event_type_fluctuation($candidate, $format_start_date, $format_end_date);
+    $nrows = oci_fetch_all($query5, $dataPoints4, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+
     oci_free_statement($query);
     oci_free_statement($query2);
     oci_free_statement($query3);
     oci_free_statement($query4);
-    //oci_free_statement($query5);
+    oci_free_statement($query5);
     //oci_free_statement($query6);  
 
   } else {
@@ -95,6 +98,8 @@
       var newStateDonationArray = [];
       var stateDonationArrayPerCapita = <?php echo json_encode($dataPoints3); ?>;
       var newStateDonationArrayPerCapita = [];
+      var eventType = <?php echo json_encode($dataPoints4); ?>;
+      var newEventType = [];
       var date;
       var year;
       var month;
@@ -122,6 +127,12 @@
         {
           newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['DISPLAYNAME'],
                                               y: parseFloat(stateDonationArrayPerCapita[i]['DONATIONS_PER_CAPITA'])});
+        }
+
+        for (var i=0;i<eventType.length;i++)
+        {
+          newEventType.push({label: eventType[i]['EVENT_TYPE'],
+                             y: parseInt(eventType[i]['AVERAGE'])});
         }
 
         window.onload = function () {
@@ -187,6 +198,29 @@
           }]
         });
         chart3.render();
+
+        var chart4 = new CanvasJS.Chart("chart4Container", {
+          animationEnabled: true,
+          title:{
+            text: "Average Donation Fluctuation Within 24 hrs of Event Type",
+            fontSize: 30,
+          },
+          axisX: {
+            labelFontSize: 15,
+            interval: 1,
+          },
+          axisY: {
+            title: "Donations (in USD)",
+            prefix: "$",
+            labelFontSize: 15,
+            titleFontSize: 15,
+          },
+          data: [{
+            type: "column",
+            dataPoints: newEventType
+          }]
+        });
+        chart4.render();
 
         }
 
