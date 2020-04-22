@@ -137,7 +137,7 @@
           },
           axisX: {
             labelFontSize: 15,
-            labelAutoFit: true,
+            interval: 1,
           },
           axisY: {
             title: "Donations (in USD)",
