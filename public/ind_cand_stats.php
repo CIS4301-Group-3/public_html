@@ -70,7 +70,7 @@
     $nrows = oci_fetch_all($query5, $dataPoints4, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
     $query6 = media_quality_fluctuation($candidate, $format_start_date, $format_end_date);
-    $nrows = oci_fetch_all($query5, $dataPoints5, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    $nrows = oci_fetch_all($query6, $dataPoints5, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
     oci_free_statement($query);
     oci_free_statement($query2);
