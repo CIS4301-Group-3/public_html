@@ -94,14 +94,14 @@
   function donations_by_state($candidate, $start_date, $end_date) {
     global $db;
     
-    $sql = "SELECT DG5.DONATION.STATE, ";
+    $sql = "SELECT ELEHMANN.STATE.DISPLAYNAME, ";
     $sql .= "SUM(DG5.DONATION.AMOUNT) AS TOTAL_DONATIONS ";
     $sql .= "FROM (DG5.DONATION ";
     $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID) ";
     $sql .= "JOIN ELEHMANN.STATE ON ELEHMANN.STATE.CODE = DG5.DONATION.STATE ";
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv AND ";
     $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
-    $sql .= "GROUP BY DG5.DONATION.STATE ";
+    $sql .= "GROUP BY ELEHMANN.STATE.DISPLAYNAME ";
     $sql .= "ORDER BY TOTAL_DONATIONS ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
@@ -116,15 +116,15 @@
   function donations_by_state_per_capita($candidate, $start_date, $end_date) {
     global $db;
     
-    $sql = "SELECT DG5.DONATION.STATE, ";
-    $sql .= "SUM(DG5.DONATION.AMOUNT) AS TOTAL_DONATIONS ";
+    $sql = "SELECT ELEHMANN.STATE.DISPLAYNAME, ";
+    $sql .= "ROUND((SUM(DG5.DONATION.AMOUNT) / ELEHMANN.STATE.POPULATION), 3) AS DONATIONS_PER_CAPITA ";
     $sql .= "FROM (DG5.DONATION ";
     $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID) ";
     $sql .= "JOIN ELEHMANN.STATE ON ELEHMANN.STATE.CODE = DG5.DONATION.STATE ";
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv AND ";
     $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
-    $sql .= "GROUP BY DG5.DONATION.STATE ";
-    $sql .= "ORDER BY TOTAL_DONATIONS ASC";
+    $sql .= "GROUP BY ELEHMANN.STATE.DISPLAYNAME ";
+    $sql .= "ORDER BY AS DONATIONS_PER_CAPITA ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
