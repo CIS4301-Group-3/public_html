@@ -48,11 +48,11 @@
       <button class="btn btn-primary" onclick="showTuple();">No. of Tuples</button>
     </div>
     
-    <div class="row">
-      <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
-        <p><?php echo $num_tuples ?></p>
-      </div>
+    
+    <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
+      <p><?php echo $num_tuples ?></p>
     </div>
+    
   </div>
 </div>
 <script>
