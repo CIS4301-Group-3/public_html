@@ -189,12 +189,12 @@ var candidates = [];
         }
         bulkDataArray.push({type: "line", showInLegend: true,
                             name: candidate[i], dataPoints: newDonationsArray});
-	moneyDataPoints.push({label: candidate[i], y: moneyArray[i]});
-	numOfDonationsDataPoints.push({label: candidate[i], y: numOfDonationsArray[i]});
-	donationSizeDataPoints.push({label: candidate[i], y: donationSizeArray[i]});
-	donationsPerCapDataPoints.push({label: candidate[i], y: donationsPerCapArray[i]});
+        moneyDataPoints.push({label: candidate[i], y: moneyArray[i]});
+        numOfDonationsDataPoints.push({label: candidate[i], y: numOfDonationsArray[i]});
+        donationSizeDataPoints.push({label: candidate[i], y: donationSizeArray[i]});
+        donationsPerCapDataPoints.push({label: candidate[i], y: donationsPerCapArray[i]});
       }
-//	console.log(moneyDataPoints);
+        //	console.log(moneyDataPoints);
         window.onload = function () {
         
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -212,7 +212,7 @@ var candidates = [];
           },
           axisY: {
             title: "Amount (USD)",
-	    prefix: "$"
+	          prefix: "$"
           },
           data: bulkDataArray
         });
@@ -224,7 +224,7 @@ var candidates = [];
             text: "<?php
                     if($locationOption == 'USA') {
                       echo "Total US Dollars Raised";
-		    } else if ($locationOption == 'State') {
+		                } else if ($locationOption == 'State') {
                       echo "Total Dollars Raised From " . $selected_state;
                     } else if ($locationOption == 'City') {
                       echo "Total Dollars Raised From " . $selected_city . ", " . $selected_state;
@@ -248,7 +248,7 @@ var candidates = [];
             text: "<?php
                     if($locationOption == 'USA') {
                       echo "Total Number of US Donations";
-		    } else if ($locationOption == 'State') {
+		                } else if ($locationOption == 'State') {
                       echo "Total Number of Donations From " . $selected_state;
                     } else if ($locationOption == 'City') {
                       echo "Total Number of Donations From " . $selected_city . ", " . $selected_state;
@@ -271,7 +271,7 @@ var candidates = [];
             text: "<?php
                     if($locationOption == 'USA') {
                       echo "US Average Donation Amount";
-		    } else if ($locationOption == 'State') {
+		                } else if ($locationOption == 'State') {
                       echo "Average Donation Amount From " . $selected_state;
                     } else if ($locationOption == 'City') {
                       echo "Average Donation Amount From " . $selected_city . ", " . $selected_state;
@@ -295,7 +295,7 @@ var candidates = [];
             text: "<?php
                     if($locationOption == 'USA') {
                       echo "Average US Donations Per Capita";
-		    } else if ($locationOption == 'State') {
+		                } else if ($locationOption == 'State') {
                       echo "Average Donations Per Capita From " . $selected_state;
                     } else if ($locationOption == 'City') {
                       echo "Average Donations Per Capita From " . $selected_city . ", " . $selected_state;
@@ -314,10 +314,7 @@ var candidates = [];
         chart.render();
 
         }
-
-
-
-      
+   
 </script>
 
 <div class="row">
@@ -388,6 +385,19 @@ var candidates = [];
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
+
+    <div class="text-center" style="display: <?php echo $display ?>;">
+      <?php if (count($dataPoints) < 1) {
+        $display = 'none';
+        if($locationOption == 'USA') {
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from the US during the specified time period</h3>";
+        } else if ($locationOption == 'State') {
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_state . " during the specified time period</h3>";
+        } else if ($locationOption == 'City') {
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
+        }
+      }?>
+    </div>
 
     <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
 	<br>
