@@ -371,13 +371,13 @@
       </div>
     </div>
 
-    <div id="chart2Container" style="height: 1000px; width: 100%;"></div>
+    <div id="chart2Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
 
-    <div id="chart3Container" style="height: 1000px; width: 100%;"></div>
+    <div id="chart3Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
 
-    <div id="chart4Container" style="height: 500px; width: 100%;"></div>
+    <div id="chart4Container" style="height: 500px; width: 100%; display: <?php echo $display ?>"></div>
 
-    <div id="chart5Container" style="height: 500px; width: 100%;"></div>
+    <div id="chart5Container" style="height: 500px; width: 100%; display: <?php echo $display ?>"></div>
 
   </div>
 </div>
