@@ -362,8 +362,8 @@
         } else if ($locationOption == 'City') {
           echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
         }
+        echo "</div>";
       } else {?>
-    </div>
     
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
