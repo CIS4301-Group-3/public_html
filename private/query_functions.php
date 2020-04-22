@@ -125,7 +125,7 @@
     $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
     $sql .= "GROUP BY ELEHMANN.STATE.DISPLAYNAME, ";
     $sql .= "ELEHMANN.STATE.POPULATION ";
-    $sql .= "ORDER BY AS DONATIONS_PER_CAPITA ASC";
+    $sql .= "ORDER BY DONATIONS_PER_CAPITA ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
