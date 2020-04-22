@@ -43,11 +43,11 @@
             }
             oci_free_statement($list_candidates); ?>
     </div>
-    <div class="row">
-      <div class="text-center" style="padding: 10px" id="tuple-button">
-        <button class="btn btn-primary" onclick="showTuple();">No. of Tuples</button>
-      </div>
+    
+    <div class="text-center" style="padding: 10px" id="tuple-button">
+      <button class="btn btn-primary" onclick="showTuple();">No. of Tuples</button>
     </div>
+    
     <div class="row">
       <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
         <p><?php echo $num_tuples ?></p>
