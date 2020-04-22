@@ -140,10 +140,6 @@
           },
           data: [{
             type: "bar",
-            indexLabel: "{y}",
-            indexLabelPlacement: "inside",
-            indexLabelFontWeight: "bolder",
-            indexLabelFontColor: "white",
             dataPoints: newStateDonationArray
           }]
         });

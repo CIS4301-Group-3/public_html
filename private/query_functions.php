@@ -105,7 +105,7 @@
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv AND ";
     $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
     $sql .= "GROUP BY DG5.DONATION.STATE ";
-    $sql .= "ORDER BY DG5.DONATION.STATE ASC";
+    $sql .= "ORDER BY TOTAL_DONATIONS ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);
