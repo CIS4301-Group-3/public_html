@@ -51,7 +51,7 @@ var candidates = [];
       while($row = oci_fetch_array($list_candidates, OCI_ASSOC+OCI_RETURN_NULLS)) {
         $candidate = $row['CANDIDATE'];
         //	echo $candidate";
-        $query = donations_over_time_state($candidate, $format_start_date, $format_end_date);
+        $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	      $dataPointArray[$i] = $dataPoints;
         $i++;
