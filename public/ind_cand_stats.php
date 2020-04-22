@@ -324,7 +324,7 @@
       </div>
       <div class="text-center">
         <div class="text-center"
-             style="margin-top: 25px;
+             style="margin-top: 20px;
                     border-top: 3px solid blue;
                     padding-top: 10px;">
           <label>Filter Location By:</label>
