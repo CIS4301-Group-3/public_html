@@ -47,7 +47,7 @@
     </div>
     
     <div class="text-center" style="margin-top: 20px" id="tuple-button">
-      <button class="btn btn-primary" onclick="showTuple()">No. of Tuples</button>
+      <button class="btn btn-primary" onclick="toggleTuple()">No. of Tuples</button>
     </div>
     
     
@@ -58,7 +58,7 @@
   </div>
 </div>
 <script>
-  function showTuple() {
+  function toggleTuple() {
     //document.getElementById("tuple-text").innerHTML = "";
     var x = document.getElementById("tuple-text");
     if (x.style.display === "none") {
