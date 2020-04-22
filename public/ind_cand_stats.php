@@ -108,7 +108,7 @@
 
         for (var i=0;i<stateDonationArray.length;i++)
         {
-          newStateDonationArray.push({x: parseInt(stateDonationArray[i]['TOTAL_DONATIONS']), y: stateDonationArray[i]['STATE']});
+          newStateDonationArray.push({y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS']), x: stateDonationArray[i]['STATE']});
         }
 
         window.onload = function () {
