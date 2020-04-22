@@ -296,9 +296,9 @@ var candidates = [];
                     if($locationOption == 'USA') {
                       echo "Total Number of US Donations Per Capita";
 		    } else if ($locationOption == 'State') {
-                      echo "Total Number of Donations From " . $selected_state;
+                      echo "Total Number of Donations Per Capita From " . $selected_state;
                     } else if ($locationOption == 'City') {
-                      echo "Total Number of Donations From " . $selected_city . ", " . $selected_state;
+                      echo "Total Number of Donations Per Capita From " . $selected_city . ", " . $selected_state;
                     }
                   ?>"
           },
