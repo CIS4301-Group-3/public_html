@@ -15,6 +15,7 @@
 
 <div id="container" style="margin-left: 15%; margin-right: 15%">
   <div id="main-menu">
+    <h2>About</h2>
     <p>Our intent is to design and deploy a web application that allows users to gain insight
       into the finances of the 2020 Democratic Presidential Primary. Both time and money are
       limited resources, especially in the field of political elections. Often campaigns spend
