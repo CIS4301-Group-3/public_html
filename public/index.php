@@ -52,14 +52,20 @@
     
     
     <div class="text-center" style="padding: 10px">
-      <p id="tuple-text"></p>
+      <p id="tuple-text" style="display: none"><?php echo $num_tuples ?></p>
     </div>
     
   </div>
 </div>
 <script>
   function showTuple() {
-    document.getElementById("tuple-text").innerHTML = "<?php echo $num_tuples ?>";
+    //document.getElementById("tuple-text").innerHTML = "";
+    var x = document.getElementById("tuple-text");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
