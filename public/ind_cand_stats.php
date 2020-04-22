@@ -60,9 +60,12 @@
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
       //$query2 = total_donations_received($start_date, $end_date, $state, $city);
     }
+    $query3 = donations_by_state($candidate, $format_start_date, $format_end_date);
+    $nrows = oci_fetch_all($query, $dataPoints2, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+
     oci_free_statement($query);
     oci_free_statement($query2);
-    //oci_free_statement($query3);
+    oci_free_statement($query3);
     //oci_free_statement($query4);
     //oci_free_statement($query5);
     //oci_free_statement($query6);  
@@ -85,6 +88,8 @@
 <script type="text/javascript">
       var donationsArray = <?php echo json_encode($dataPoints); ?>;
       var newDonationsArray = [];
+      var stateDonationArray = <?php echo json_encode($dataPoints2); ?>;
+      var newStateDonationArray = [];
       var date;
       var year;
       var month;
@@ -99,6 +104,11 @@
           month = parseInt(date.substring(4, 6)) - 1;
           day = parseInt(date.substring(6, 8));
           newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[i]['TOTAL_DONATIONS'])});
+        }
+
+        for (var i=0;i<stateDonationArray.length;i++)
+        {
+          newStateDonationArray.push({x: parseInt(stateDonationArray[i]['TOTAL_DONATIONS']), y: stateDonationArray[i]['STATE']});
         }
 
         window.onload = function () {
@@ -120,16 +130,22 @@
 
         var chart2 = new CanvasJS.Chart("chart2Container", {
           animationEnabled: true,
-          exportEnabled: true,
-          title: {
-            text: "<?php echo $candidate?> Donations Over Time"
+          title:{
+            text: "Revenue Chart of Acme Corporation"
           },
           axisY: {
-            title: "Amount (USD)"
+            title: "Revenue (in USD)",
+            prefix: "$",
+            suffix:  "k"
           },
           data: [{
-            type: "line",
-            dataPoints: newDonationsArray
+            type: "bar",
+            yValueFormatString: "$#,##0K",
+            indexLabel: "{y}",
+            indexLabelPlacement: "inside",
+            indexLabelFontWeight: "bolder",
+            indexLabelFontColor: "white",
+            dataPoints: newStateDonationArray
           }]
         });
         chart2.render();
