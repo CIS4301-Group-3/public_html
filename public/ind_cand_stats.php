@@ -134,9 +134,13 @@
           title:{
             text: "Total Donations By State Over Time Period"
           },
+          axisX: {
+            labelFontSize: 20,
+          },
           axisY: {
             title: "Donations (in USD)",
             prefix: "$",
+            labelFontSize: 20,
             titleFontSize: 20,
           },
           data: [{
