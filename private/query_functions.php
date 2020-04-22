@@ -136,7 +136,7 @@
     return $query;
   }
 
-  function avg_event_type_fluctuation($candidate, $start_date, $end_date) {
+  function event_type_fluctuation($candidate, $start_date, $end_date) {
     global $db;
     
     $sql = "SELECT event_type, ROUND(SUM(difference)/count(day),0) as average ";
@@ -149,10 +149,41 @@
     $sql .= "(SELECT Round(AVG(daily),0) as average ";
     $sql .= "FROM (SELECT day, SUM(amount) as daily ";
     $sql .= "FROM dg5.donation, elehmann.committee ";
-    $sql .= "WHERE committee.candidate='Bernie Sanders' AND donation.committeeid = committee.committee_id and donation.day BETWEEN :start_date_bv AND :end_date_bv ";
+    $sql .= "WHERE committee.candidate = :candidate_bv ";
+    $sql .= "AND donation.committeeid = committee.committee_id ";
+    $sql .= "AND donation.day BETWEEN :start_date_bv AND :end_date_bv ";
     $sql .= "GROUP BY day))) ";
-    $sql .= "WHERE event.candidate = 'Bernie Sanders' AND event_day = day ";
+    $sql .= "WHERE event.candidate = :candidate_bv AND event_day = day ";
     $sql .= "GROUP by event_type";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_bind_by_name($query, ":candidate_bv", $candidate);
+    oci_bind_by_name($query, ":start_date_bv", $start_date);
+    oci_bind_by_name($query, ":end_date_bv", $end_date);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
+  }
+
+  function media_quality_fluctuation($candidate, $start_date, $end_date) {
+    global $db;
+    
+    $sql = "SELECT event_quality, ROUND(SUM(difference)/count(day),0) as average ";
+    $sql .= "FROM elehmann.event, ";
+    $sql .= "(SELECT day, (daily-average) as difference ";
+    $sql .= "FROM (SELECT day, SUM(amount) as daily ";
+    $sql .= "FROM dg5.donation, elehmann.committee ";
+    $sql .= "WHERE donation.committeeid = committee.committee_id AND committee.candidate = :candidate_bv ";
+    $sql .= "GROUP BY day), ";
+    $sql .= "(SELECT Round(AVG(daily),0) as average ";
+    $sql .= "FROM (SELECT day, SUM(amount) as daily ";
+    $sql .= "FROM dg5.donation, elehmann.committee ";
+    $sql .= "WHERE committee.candidate = :candidate_bv ";
+    $sql .= "AND donation.committeeid = committee.committee_id ";
+    $sql .= "AND donation.day BETWEEN :start_date_bv AND :end_date_bv ";
+    $sql .= "GROUP BY day))) ";
+    $sql .= "WHERE event.candidate = :candidate_bv AND event_day = day AND event_type='Media' ";
+    $sql .= "GROUP by event_quality";
     //echo $sql;
     $query = oci_parse($db, $sql);
     oci_bind_by_name($query, ":candidate_bv", $candidate);

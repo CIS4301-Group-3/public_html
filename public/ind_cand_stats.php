@@ -66,15 +66,18 @@
     $query4 = donations_by_state_per_capita($candidate, $format_start_date, $format_end_date);
     $nrows = oci_fetch_all($query4, $dataPoints3, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
-    $query5 = avg_event_type_fluctuation($candidate, $format_start_date, $format_end_date);
+    $query5 = event_type_fluctuation($candidate, $format_start_date, $format_end_date);
     $nrows = oci_fetch_all($query5, $dataPoints4, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+
+    $query6 = media_quality_fluctuation($candidate, $format_start_date, $format_end_date);
+    $nrows = oci_fetch_all($query5, $dataPoints5, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
     oci_free_statement($query);
     oci_free_statement($query2);
     oci_free_statement($query3);
     oci_free_statement($query4);
     oci_free_statement($query5);
-    //oci_free_statement($query6);  
+    oci_free_statement($query6);  
 
   } else {
   
@@ -100,6 +103,8 @@
       var newStateDonationArrayPerCapita = [];
       var eventType = <?php echo json_encode($dataPoints4); ?>;
       var newEventType = [];
+      var mediaQuality = <?php echo json_encode($dataPoints5); ?>;
+      var newMediaQuality = [];
       var date;
       var year;
       var month;
@@ -133,6 +138,12 @@
         {
           newEventType.push({label: eventType[i]['EVENT_TYPE'],
                              y: parseInt(eventType[i]['AVERAGE'])});
+        }
+
+        for (var i=0;i<mediaQuality.length;i++)
+        {
+          newMediaQuality.push({label: mediaQuality[i]['EVENT_QUALITY'],
+                             y: parseInt(mediaQuality[i]['AVERAGE'])});
         }
 
         window.onload = function () {
@@ -221,6 +232,29 @@
           }]
         });
         chart4.render();
+
+        var chart5 = new CanvasJS.Chart("chart5Container", {
+          animationEnabled: true,
+          title:{
+            text: "Average Donation Fluctuation Within 24 hrs of Media Event Based on Quality",
+            fontSize: 30,
+          },
+          axisX: {
+            labelFontSize: 15,
+            interval: 1,
+          },
+          axisY: {
+            title: "Donations (in USD)",
+            prefix: "$",
+            labelFontSize: 15,
+            titleFontSize: 15,
+          },
+          data: [{
+            type: "column",
+            dataPoints: newMediaQuality
+          }]
+        });
+        chart5.render();
 
         }
 
@@ -342,6 +376,8 @@
     <div id="chart3Container" style="height: 1000px; width: 100%;"></div>
 
     <div id="chart4Container" style="height: 500px; width: 100%;"></div>
+
+    <div id="chart5Container" style="height: 500px; width: 100%;"></div>
 
   </div>
 </div>
