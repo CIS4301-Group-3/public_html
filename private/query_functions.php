@@ -123,7 +123,8 @@
     $sql .= "JOIN ELEHMANN.STATE ON ELEHMANN.STATE.CODE = DG5.DONATION.STATE ";
     $sql .= "WHERE ELEHMANN.COMMITTEE.CANDIDATE = :candidate_bv AND ";
     $sql .= "DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
-    $sql .= "GROUP BY ELEHMANN.STATE.DISPLAYNAME ";
+    $sql .= "GROUP BY ELEHMANN.STATE.DISPLAYNAME, ";
+    $sql .= "ELEHMANN.STATE.POPULATION ";
     $sql .= "ORDER BY AS DONATIONS_PER_CAPITA ASC";
     //echo $sql;
     $query = oci_parse($db, $sql);
