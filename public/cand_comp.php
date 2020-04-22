@@ -165,14 +165,15 @@ var candidates = [];
         <?php
           }
         ?>
-        <?php foreach($donations_per_capita as $num => $val){
+        <?php foreach($donation_per_capita as $num => $val){
         ?>
                 donationsPerCapArray[<?php echo $num;?>] = <?php echo str_replace(',','',$val); ?>;
         <?php
           }
         ?>
+//      console.log(donationsPerCapArray);
+
       for (var i=0;i<dataMagic.length;i++){
-//	      console.log(dataMagic[i]);
         donationsArray = dataMagic[i];
         newDonationsArray = [];
         if (donationsArray != null) {
