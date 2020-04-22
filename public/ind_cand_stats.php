@@ -370,7 +370,8 @@
     
     <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $donation_display ?>"></div>
 
-    <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
+    <div class="text-center"
+         style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>; border-bottom: 2px solid blue;">
       <?php if (count($dataPoints) > 0) {
         if($locationOption == 'USA') {
           echo "<h3>List of Stats from the US</h3>";
