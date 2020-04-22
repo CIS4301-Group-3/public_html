@@ -201,6 +201,7 @@ var candidates = [];
         
         var chart = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
+          zoomEnabled: true,
           title: {
             text: "<?php
                     if($locationOption == 'USA') {
