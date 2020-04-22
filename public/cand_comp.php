@@ -294,16 +294,17 @@ var candidates = [];
           title: {
             text: "<?php
                     if($locationOption == 'USA') {
-                      echo "Total Number of US Donations Per Capita";
+                      echo "Average US Donations Per Capita";
 		    } else if ($locationOption == 'State') {
-                      echo "Total Number of Donations Per Capita From " . $selected_state;
+                      echo "Average Donations Per Capita From " . $selected_state;
                     } else if ($locationOption == 'City') {
-                      echo "Total Number of Donations Per Capita From " . $selected_city . ", " . $selected_state;
+                      echo "Average Donations Per Capita From " . $selected_city . ", " . $selected_state;
                     }
                   ?>"
           },
           axisY: {
-            title: "Number of Donations"
+            title: "Amount (USD)",
+	    prefix: "$"
           },
           data: [{        
 		type: "column",  
