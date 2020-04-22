@@ -61,7 +61,7 @@
       //$query2 = total_donations_received($start_date, $end_date, $state, $city);
     }
     $query3 = donations_by_state($candidate, $format_start_date, $format_end_date);
-    $nrows = oci_fetch_all($query, $dataPoints2, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    $nrows = oci_fetch_all($query3, $dataPoints2, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 
     oci_free_statement($query);
     oci_free_statement($query2);
@@ -262,7 +262,7 @@
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
 
-      <div id="chart2Container" style="height: 500px; width: 100%;"></div>
+      <div id="chart2Container" style="height: 700px; width: 100%;"></div>
 
     </div>
   </div>
