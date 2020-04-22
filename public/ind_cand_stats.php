@@ -119,7 +119,8 @@
             text: "<?php echo $candidate?> Donations Over Time"
           },
           axisY: {
-            title: "Amount (USD)"
+            title: "Amount (USD)",
+            prefix: "$",
           },
           data: [{
             type: "line",
@@ -131,16 +132,14 @@
         var chart2 = new CanvasJS.Chart("chart2Container", {
           animationEnabled: true,
           title:{
-            text: "Revenue Chart of Acme Corporation"
+            text: "Total Donations By State Over Time Period"
           },
           axisY: {
-            title: "Revenue (in USD)",
+            title: "Donations (in USD)",
             prefix: "$",
-            suffix:  "k"
           },
           data: [{
             type: "bar",
-            yValueFormatString: "$#,##0K",
             indexLabel: "{y}",
             indexLabelPlacement: "inside",
             indexLabelFontWeight: "bolder",
