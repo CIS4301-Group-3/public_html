@@ -124,7 +124,7 @@
     $sql .= "ROUND(AVG(DG5.DONATION.AMOUNT), 2) AS DONATION_SIZE, ";
     $sql .= "ROUND((SUM(DG5.DONATION.AMOUNT) / (SELECT ELEHMANN.CITY.POPULATION ";
     $sql .= "FROM ELEHMANN.CITY WHERE ELEHMANN.CITY.STATE = :state_bv ";
-    $sql .= "AND ELEHMANN.CITY.CITY LIKE :ecity_bv)), 3) AS DONATIONS_PER_CAPITA ";
+    $sql .= "AND REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(ELEHMANN.CITY.CITY, ' city and burrow$', ''),' city$',''),' borough$',''),' town$',''),' municipality$',''),' village$',''),' unified government$','') LIKE :ecity_bv)), 3) AS DONATIONS_PER_CAPITA ";
     $sql .= "FROM DG5.DONATION ";
     $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID ";
     $sql .= "WHERE DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
@@ -136,8 +136,7 @@
     oci_bind_by_name($query, ":start_date_bv", $start_date);
     oci_bind_by_name($query, ":end_date_bv", $end_date);
     oci_bind_by_name($query, ":state_bv", $state);
-	$ecity = $city . "%";
-    oci_bind_by_name($query, ":ecity_bv", $ecity);
+    oci_bind_by_name($query, ":ecity_bv", $city);
     oci_bind_by_name($query, ":city_bv", strtoupper($city));
     oci_execute($query);
     confirm_result_set($query);
