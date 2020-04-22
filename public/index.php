@@ -45,12 +45,12 @@
     </div>
     <div class="row">
       <div class="text-center" style="padding: 10px" id="tuple-button">
-        <button class="btn btn-primary" onclick="showTuple();">Number of Tuples</button>
+        <button class="btn btn-primary" onclick="showTuple();">No. of Tuples</button>
       </div>
     </div>
     <div class="row">
       <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
-        <p class="btn btn-primary"><?php echo $num_tuples ?></p>
+        <p><?php echo $num_tuples ?></p>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
     //var tupleButton = document.getElementById('tuple-button');
     var tupleText = document.getElementById('tuple-text');
 
-    tuplleText.style.display = "block";
+    tupleText.style.display = "block";
   }
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
