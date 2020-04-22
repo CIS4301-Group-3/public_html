@@ -89,7 +89,7 @@ var candidates = [];
         $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
         $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	      $dataPointArray[$i] = $dataPoints;
-	$query2 = donation_data_city($format_start_date, $format_end_date, $selected_city);
+	$query2 = donation_data_city($format_start_date, $format_end_date, $selected_state, $selected_city);
         while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
           if ($row['CANDIDATE'] == $candidate) {
             $money[$i] = number_format($row['TOTAL_DONATIONS']);
