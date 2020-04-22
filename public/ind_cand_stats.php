@@ -321,7 +321,7 @@
         <div class="col"></div>
       </div>
       <div class="text-center">
-        <div class="text-center" style="margin-top: 5px">
+        <div class="text-center" style="margin-top: 25px">
           <label>Filter Location By:</label>
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -362,13 +362,13 @@
         } else if ($locationOption == 'City') {
           echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
         }
-      }?>
+      } else {?>
     </div>
     
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
-      <?php if (count($dataPoints) > 0) {
+      <?php 
         if($locationOption == 'USA') {
           echo "<h3>List of Stats from the US</h3>";
         } else if ($locationOption == 'State') {
