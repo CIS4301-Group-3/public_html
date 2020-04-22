@@ -44,23 +44,20 @@
             oci_free_statement($list_candidates); ?>
     </div>
     
-    <div class="text-center" style="padding: 10px" id="tuple-button">
-      <button class="btn btn-primary" onclick="showTuple();">No. of Tuples</button>
+    <div class="text-center" style="margin-top: 20px" id="tuple-button">
+      <button class="btn btn-primary" onclick="showTuple()">No. of Tuples</button>
     </div>
     
     
-    <div class="text-center" style="padding: 10px" id="tuple-text" style="display: none">
-      <p><?php echo $num_tuples ?></p>
+    <div class="text-center" style="padding: 10px">
+      <p id="tuple-text"><?php echo $num_tuples ?></p>
     </div>
     
   </div>
 </div>
 <script>
   function showTuple() {
-    //var tupleButton = document.getElementById('tuple-button');
-    var tupleText = document.getElementById('tuple-text');
-
-    tupleText.style.display = "block";
+    document.getElementById("tuple-text").innerHTML = "<?php echo $num_tuples ?>";
   }
 </script>
 <?php include(SHARED_PATH . '/footer.php'); ?>
