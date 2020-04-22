@@ -50,11 +50,18 @@
           $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 3);
         }
       }
-
     } else if ($locationOption == 'State') {
       $query = donations_over_time_state($candidate, $selected_state, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-      //$query2 = donation_data_state($start_date, $end_date, $state);
+      $query2 = donation_data_state($start_date, $end_date, $state);
+      while($row = oci_fetch_array($query2, OCI_ASSOC+OCI_RETURN_NULLS)) {
+        if ($row['CANDIDATE'] == $candidate) {
+          $money = number_format($row['TOTAL_DONATIONS']);
+          $num_donations = number_format($row['NUM_DONATIONS']);
+          $donation_size = number_format($row['DONATION_SIZE'], 2);
+          $donation_per_capita = number_format($row['DONATIONS_PER_CAPITA'], 3);
+        }
+      }
     } else if ($locationOption == 'City') {
       $query = donations_over_time_city($candidate, $selected_state, $selected_city, $format_start_date, $format_end_date);
       $nrows = oci_fetch_all($query, $dataPoints, null, null, OCI_FETCHSTATEMENT_BY_ROW);

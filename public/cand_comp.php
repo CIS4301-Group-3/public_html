@@ -169,7 +169,7 @@ var candidates = [];
   </div>
   <div class="col-8" id="content">
     <div>
-      <h1 class="text-center">Candidate Statistics</h1>
+      <h1 class="text-center">Candidate Comparison</h1>
     </div>
 
     <form action="<?php echo url_for('/cand_comp.php'); ?>" method="post">

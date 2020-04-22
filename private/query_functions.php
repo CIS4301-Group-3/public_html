@@ -91,6 +91,30 @@
     return $query;
   }
 
+  function donation_data_state($start_date, $end_date, $state) {
+    global $db;
+    
+    $sql = "SELECT ELEHMANN.COMMITTEE.CANDIDATE, ";
+    $sql .= "SUM(DG5.DONATION.AMOUNT) AS TOTAL_DONATIONS, ";
+    $sql .= "COUNT(DG5.DONATION.AMOUNT) AS NUM_DONATIONS, ";
+    $sql .= "ROUND(AVG(DG5.DONATION.AMOUNT), 2) AS DONATION_SIZE, ";
+    $sql .= "ROUND((SUM(DG5.DONATION.AMOUNT) / (SELECT SUM(ELEHMANN.STATE.POPULATION) FROM ELEHMANN.STATE)), 3) AS DONATIONS_PER_CAPITA ";
+    $sql .= "FROM DG5.DONATION ";
+    $sql .= "JOIN ELEHMANN.COMMITTEE ON ELEHMANN.COMMITTEE.COMMITTEE_ID = DG5.DONATION.COMMITTEEID ";
+    $sql .= "WHERE DG5.DONATION.DAY >= :start_date_bv AND DG5.DONATION.DAY <= :end_date_bv ";
+    $sql .= "AND DG5.DONATION.STATE = :state_bv ";
+    $sql .= "GROUP BY ELEHMANN.COMMITTEE.CANDIDATE ";
+    $sql .= "ORDER BY ELEHMANN.COMMITTEE.CANDIDATE ASC";
+    //echo $sql;
+    $query = oci_parse($db, $sql);
+    oci_bind_by_name($query, ":start_date_bv", $start_date);
+    oci_bind_by_name($query, ":end_date_bv", $end_date);
+    oci_bind_by_name($query, ":state_bv", $state);
+    oci_execute($query);
+    confirm_result_set($query);
+    return $query;
+  }
+
   function donations_by_state($candidate, $start_date, $end_date) {
     global $db;
     
