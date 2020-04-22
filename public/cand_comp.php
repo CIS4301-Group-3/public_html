@@ -64,9 +64,10 @@ var candidates = [];
   
     $start_date = '2019-01-01';
     $end_date = '2019-12-31';
-    $format_start_date = format_date($start_date);
-    $format_end_date = format_date($end_date);
+    //$format_start_date = format_date($start_date);
+    //$format_end_date = format_date($end_date);
     $selected_state = '';
+    $display = 'none';
 
   }
   
