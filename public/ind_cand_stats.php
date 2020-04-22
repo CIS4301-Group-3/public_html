@@ -346,7 +346,7 @@
       } else if ($locationOption == 'State') {
         echo "<h3>List of Stats from " . $selected_state . "</h3>";
       } else if ($locationOption == 'City') {
-        echo "<h3>List of Stats from " . $selected_city . ", " . $selected_state . "</h3";
+        echo "<h3>List of Stats from " . $selected_city . ", " . $selected_state . "</h3>";
       }
       ?>
 
