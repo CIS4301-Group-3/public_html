@@ -341,6 +341,8 @@
 
     <div id="chart3Container" style="height: 1000px; width: 100%;"></div>
 
+    <div id="chart4Container" style="height: 500px; width: 100%;"></div>
+
   </div>
 </div>
 <script>
