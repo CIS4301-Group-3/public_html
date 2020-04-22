@@ -235,7 +235,7 @@
 
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-    <div class="text-center" style="margin-top: 20px; display: <?php echo $display ?>;">
+    <div class="text-center" style="margin-top: 20px; margin-bottom: 20px; display: <?php echo $display ?>;">
       <?php if($locationOption == 'USA') {
         echo "<h3>List of Stats from the US</h3>";
       } else if ($locationOption == 'State') {
