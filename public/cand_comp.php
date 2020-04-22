@@ -128,7 +128,15 @@ var candidates = [];
         var chart = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
           title: {
-            text: "Donations Over Time"
+            text: <?php
+                    if($locationOption == 'USA') {
+                      echo "Donations Over Time From the US";
+                    } else if ($locationOption == 'State') {
+                      echo "Donations Over Time From " . $selected_state;
+                    } else if ($locationOption == 'City') {
+                      echo "Donations Over Time From " . $selected_city . ", " . $selected_state;
+                    }
+                  ?>
           },
           axisY: {
             title: "Amount (USD)"
