@@ -133,7 +133,7 @@
           animationEnabled: true,
           title:{
             text: "Total Donations By State Over Time Period",
-            fontSize: 50,
+            fontSize: 40,
           },
           axisX: {
             labelFontSize: 15,
@@ -264,10 +264,10 @@
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
-
-      <div id="chart2Container" style="height: 1000px; width: 100%;"></div>
-
     </div>
+
+    <div id="chart2Container" style="height: 1000px; width: 100%;"></div>
+
   </div>
 </div>
 <script>
