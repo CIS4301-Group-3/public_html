@@ -50,7 +50,7 @@
     
     
     <div class="text-center" style="padding: 10px">
-      <p id="tuple-text"><?php echo $num_tuples ?></p>
+      <p id="tuple-text"></p>
     </div>
     
   </div>
