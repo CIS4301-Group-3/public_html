@@ -15,15 +15,16 @@
 
 <div id="container" style="margin-left: 15%; margin-right: 15%">
   <div id="main-menu">
-    <p>Our intent is to design and deploy a web application that allows users to gain insight into the
-        finances of the 2020 Presidential Primary. In an election season with so many candidates,
-        having a tool able to assist in analyzing campaign nance trends would be an invaluable
-        asset. Each candidate is required to report information about individual donations to the
-        Federal Election Commission. This report includes detailed information about each individ-
-        ual donor, including their name, the donation amount, city, and state as well as employer
-        and occupation. We are interested in seeing comparisons to individual campaign events as
-        well as coverage of candidates and their competitors in the news media. Lastly, we believe we
-        will be able to gain insight into the donors by comparing their employers and occupations.
+    <p>Our intent is to design and deploy a web application that allows users to gain insight
+      into the finances of the 2020 Democratic Presidential Primary. Both time and money are
+      limited resources, especially in the field of political elections. Often campaigns spend
+      their time and effort with the intention of raising additional funds to fuel the campaign.
+      Due to the limited time available, it is important to optimize the time to ensure that
+      it is effectively spent raising revenue. Using publicly available information from the
+      Federal Election Commission, we have created a tool to examine the connections between
+      a campaign's events and their fundraising. In addition to the amount and date of a
+      donation, we have access to each donor's employer and state of residence, we feel that
+      useful details can be found in this data as well.
     </p>
     <h2 class="text-center"><a href="<?php echo url_for('/cand_comp.php'); ?>">Candidate Comparison</a></h2>
     <h2 class="text-center">Individual Candidate Page</h2>
