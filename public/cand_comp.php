@@ -29,6 +29,7 @@ var candidates = [];
 
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
+    $display = 'block';
 
     if ($locationOption == 'USA') {
       $i = 0;
@@ -64,8 +65,6 @@ var candidates = [];
   
     $start_date = '2019-01-01';
     $end_date = '2019-12-31';
-    //$format_start_date = format_date($start_date);
-    //$format_end_date = format_date($end_date);
     $selected_state = '';
     $display = 'none';
 
@@ -108,16 +107,17 @@ var candidates = [];
             year = parseInt(date.substring(0, 4));
             month = parseInt(date.substring(4, 6)) - 1;
             day = parseInt(date.substring(6, 8));
-            newDonationsArray.push({x: new Date(year, month, day), y: parseInt(donationsArray[c]['TOTAL_DONATIONS'])});
+            newDonationsArray.push({x: new Date(year, month, day),
+                                    y: parseInt(donationsArray[c]['TOTAL_DONATIONS'])});
           }
         }
-	bulkDataArray.push({type: "line",showInLegend: true, name: candidate[i], dataPoints: newDonationsArray});
+        bulkDataArray.push({type: "line", showInLegend: true,
+                            name: candidate[i], dataPoints: newDonationsArray});
       }
         window.onload = function () {
         
         var chart = new CanvasJS.Chart("chartContainer", {
           animationEnabled: true,
-          exportEnabled: true,
           title: {
             text: "Donations Over Time"
           },
@@ -127,6 +127,7 @@ var candidates = [];
           data: bulkDataArray
         });
         chart.render();
+
         }
       
 </script>
@@ -200,7 +201,7 @@ var candidates = [];
       </div>
     </form>
 
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $display ?>"></div>
 
   </div>
 </div>
