@@ -353,14 +353,14 @@
       </div>
     </form>
 
-    <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
+    <div class="text-center" style="display: <?php echo $display ?>;">
       <?php if (count($dataPoints) < 1) {
         if($locationOption == 'USA') {
-          echo "<h3>There are no donations from the US during the specified time period</h3>";
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from the US during the specified time period</h3>";
         } else if ($locationOption == 'State') {
-          echo "<h3>There are no donations from " . $selected_state . " during the specified time period</h3>";
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_state . " during the specified time period</h3>";
         } else if ($locationOption == 'City') {
-          echo "<h3>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
+          echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
         }
       }?>
     </div>
