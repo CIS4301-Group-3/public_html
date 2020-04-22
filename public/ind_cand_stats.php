@@ -113,12 +113,12 @@
 
         for (var i=0;i<stateDonationArray.length;i++)
         {
-          newStateDonationArray.push({label: stateDonationArray[i]['STATE'], y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS'])});
+          newStateDonationArray.push({label: stateDonationArray[i]['DISPLAYNAME'], y: parseInt(stateDonationArray[i]['TOTAL_DONATIONS'])});
         }
 
         for (var i=0;i<stateDonationArray.length;i++)
         {
-          newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['STATE'], y: parseInt(stateDonationArrayPerCapita[i]['TOTAL_DONATIONS'])});
+          newStateDonationArrayPerCapita.push({label: stateDonationArrayPerCapita[i]['DISPLAYNAME'], y: parseInt(stateDonationArrayPerCapita[i]['TOTAL_DONATIONS'])});
         }
 
         window.onload = function () {
