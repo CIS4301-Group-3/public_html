@@ -36,6 +36,7 @@
     $format_start_date = format_date($start_date);
     $format_end_date = format_date($end_date);
     $display = 'block';
+    $donation_display = 'block';
 
     if ($locationOption == 'USA') {
       $query = donations_over_time_usa($candidate, $format_start_date, $format_end_date);
@@ -102,6 +103,7 @@
     $end_date = '2019-12-31';
     $selected_state = '';
     $display = 'none';
+    $donation_display = 'none';
 
   }
   
@@ -355,6 +357,7 @@
 
     <div class="text-center" style="display: <?php echo $display ?>;">
       <?php if (count($dataPoints) < 1) {
+        $donation_display = 'none';
         if($locationOption == 'USA') {
           echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from the US during the specified time period</h3>";
         } else if ($locationOption == 'State') {
@@ -362,13 +365,13 @@
         } else if ($locationOption == 'City') {
           echo "<h3 style='margin-top: 20px; margin-bottom: 40px;'>There are no donations from " . $selected_city . ", " . $selected_state . " during the specified time period</h3>";
         }
-        echo "</div>";
-      } else {?>
+      }?>
+    </div>
     
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <div id="chartContainer" style="height: 370px; width: 100%; display: <?php echo $donation_display ?>"></div>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 40px; display: <?php echo $display ?>;">
-      <?php 
+      <?php if (count($dataPoints) > 0) {
         if($locationOption == 'USA') {
           echo "<h3>List of Stats from the US</h3>";
         } else if ($locationOption == 'State') {
@@ -398,8 +401,8 @@
         <div class ="col-6" style="text-align: right">Amount Donated Per Capita</div>
         <div class ="col-6" style="text-align: left">$<?php echo $donation_per_capita?></div>
       </div>
+      <?php } ?>
     </div>
-    <?php } ?>
     
     <div id="chart2Container" style="height: 1000px; width: 100%; display: <?php echo $display ?>"></div>
 
